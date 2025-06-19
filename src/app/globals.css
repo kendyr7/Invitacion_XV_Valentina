@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 262 52% 50%; /* Deep Purple #673AB7 */
-    --primary-foreground: 0 0% 98%; /* Light color for text on primary */
+    --primary: 255 31% 84%; /* Soft Lavender #D0C9E2 - New Primary */
+    --primary-foreground: 262 40% 25%; /* Dark Purple for text on Soft Lavender */
 
     --secondary: 255 31% 90%; /* Lighter Soft Lavender for secondary elements */
     --secondary-foreground: 262 52% 40%; /* Darker purple for text on secondary */
@@ -22,15 +22,15 @@
     --muted: 0 0% 90%; /* Slightly darker gray for muted elements */
     --muted-foreground: 0 0% 45.1%;
 
-    --accent: 255 31% 84%; /* Soft Lavender #D0C9E2 */
-    --accent-foreground: 262 52% 30%; /* Darker purple for text on accent */
+    --accent: 262 52% 50%; /* Deep Purple #673AB7 - New Accent */
+    --accent-foreground: 0 0% 98%; /* White for text on Deep Purple */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 262 52% 50%; /* Deep Purple for rings */
+    --ring: 255 31% 84%; /* Soft Lavender for rings (new primary) */
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -59,24 +59,24 @@
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 262 52% 60%; /* Adjusted Deep Purple for dark mode */
-    --primary-foreground: 0 0% 9%;
+    --primary: 255 31% 70%; /* Adjusted Soft Lavender for dark mode - New Dark Primary */
+    --primary-foreground: 0 0% 9%; /* Dark text for new Dark Primary */
 
-    --secondary: 255 31% 20%; /* Adjusted Soft Lavender for dark mode */
+    --secondary: 255 31% 20%; /* Adjusted Soft Lavender for dark mode secondary */
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
 
-    --accent: 255 31% 70%; /* Adjusted Soft Lavender for dark mode */
-    --accent-foreground: 262 52% 30%;
+    --accent: 262 52% 60%; /* Adjusted Deep Purple for dark mode - New Dark Accent */
+    --accent-foreground: 0 0% 98%; /* White text for new Dark Accent */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 262 52% 60%; /* Adjusted Deep Purple for dark mode */
+    --ring: 255 31% 70%; /* Adjusted Soft Lavender for dark mode rings */
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;

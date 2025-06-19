@@ -10,10 +10,10 @@ interface EventDetailsProps {
 
 const EventDetailItem: React.FC<{ icon: React.ReactNode; label: string; value: string }> = ({ icon, label, value }) => (
   <div className="flex items-center space-x-3 p-3 bg-secondary/30 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-    <div className="text-primary">{icon}</div>
+    <div className="text-accent">{icon}</div>
     <div>
-      <p className="text-sm font-semibold text-accent-foreground">{label}</p>
-      <p className="text-md text-primary">{value}</p>
+      <p className="text-sm font-semibold text-primary-foreground">{label}</p>
+      <p className="text-md text-accent">{value}</p>
     </div>
   </div>
 );
