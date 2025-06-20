@@ -21,6 +21,9 @@ import {
   Disc3, 
   Car,
   Palette,
+  Brush,
+  Wine,
+  Bus
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -90,7 +93,7 @@ export default function HomePage() {
           dayName="Viernes"
           dayNumber="1"
           year="2025"
-          className="animate-in fade-in duration-1000 delay-700"
+          className="animate-in fade-in duration-1000 delay-700 text-primary"
         />
 
         <div className="w-full max-w-md animate-in fade-in duration-1000 delay-800">
@@ -101,9 +104,10 @@ export default function HomePage() {
           <SectionCard
             title="Ceremonia Religiosa"
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
+            titleClassName="text-primary"
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Image src="/church.png" alt="Iglesia Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building"/>
+               <Image src="/church.png" alt="Iglesia Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Parroquia Jesús de la Divina Misericordia</p>
@@ -116,9 +120,10 @@ export default function HomePage() {
           <SectionCard 
             title="Recepción"
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
+            titleClassName="text-primary"
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <GlassWater size={40} className="text-primary shrink-0"/>
+              <GlassWater size={40} className="text-primary shrink-0" />
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -132,6 +137,7 @@ export default function HomePage() {
             title="Itinerario de Actividades" 
             icon={<ListChecks size={28} className="text-primary"/>}
             contentClassName="px-0 pt-4 pb-4" 
+            titleClassName="text-primary"
           >
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
               
@@ -155,7 +161,8 @@ export default function HomePage() {
 
         <div className="w-full animate-in fade-in duration-1000 delay-1200">
           <SectionCard 
-            title="Código de Vestimenta" 
+            title="Código de Vestimenta"
+            titleClassName="text-primary"
           >
              <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
              <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
@@ -166,6 +173,7 @@ export default function HomePage() {
           <SectionCard
             title="Colores Reservados"
             icon={<Palette size={28} className="text-primary"/>}
+            titleClassName="text-primary"
           >
             <div className="flex justify-center space-x-3 mt-2">
               <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
@@ -178,10 +186,12 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
+
         <div className="w-full animate-in fade-in duration-1000 delay-[1400ms]">
           <SectionCard 
             title="Sugerencia de Regalos" 
             icon={<Gift size={28} className="text-primary"/>}
+            titleClassName="text-primary"
           >
             <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valentina agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
           </SectionCard>
@@ -215,9 +225,9 @@ export default function HomePage() {
         </div>
 
         {/* Decorative flowers at the bottom, now inside the card */}
-        <div className="w-full max-w-2xl mx-auto mt-6 mb-0 px-0 animate-in fade-in duration-1000 delay-[1800ms]">
+        <div className="w-full mt-6 animate-in fade-in duration-1000 delay-[1800ms]">
           <Image
-            src="/flores_bottom.png"
+            src="/flowers_deco/flores bottom.png"
             alt="Decorative flowers at the bottom"
             width={1200} 
             height={300} 
