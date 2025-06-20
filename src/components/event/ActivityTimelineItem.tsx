@@ -1,6 +1,7 @@
 
 "use client";
 import type { ReactNode } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
 
 interface ActivityTimelineItemProps {
@@ -11,6 +12,39 @@ interface ActivityTimelineItemProps {
 }
 
 const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title, icon, align }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const itemRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const currentItemRef = itemRef.current; // Capture for use in cleanup
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (currentItemRef) {
+            observer.unobserve(currentItemRef); // Animate only once
+          }
+        }
+      },
+      {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px 0px -50px 0px', // Trigger when item is 50px from bottom of viewport
+        threshold: 0.1, // Trigger when 10% of the item is visible
+      }
+    );
+
+    if (currentItemRef) {
+      observer.observe(currentItemRef);
+    }
+
+    return () => {
+      if (currentItemRef) {
+        observer.unobserve(currentItemRef);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs once on mount and cleanup on unmount
+
   const eventDetails = (
     <div className={cn(
       "flex flex-col w-full px-1", 
@@ -29,7 +63,15 @@ const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title
 
 
   return (
-    <div className="relative flex w-full items-center">
+    <div
+      ref={itemRef}
+      className={cn(
+        "relative flex w-full items-center transition-all duration-700 ease-out",
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0",
+        !isVisible && align === 'left' ? "-translate-x-10" : "",
+        !isVisible && align === 'right' ? "translate-x-10" : ""
+      )}
+    >
       {align === 'left' && (
         <>
           <div className={cn(contentPaneWidth, "flex justify-end items-center py-3 sm:py-4")}>

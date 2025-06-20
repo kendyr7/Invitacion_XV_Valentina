@@ -64,12 +64,12 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <div className="flex flex-col items-center my-2 sm:my-4 animate-in fade-in duration-1000 delay-300">
+        <div className="flex flex-col items-center mt-8 mb-6 animate-in fade-in duration-1000 delay-300">
           <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
           <p className="font-headline text-2xl sm:text-3xl text-primary mt-2 tracking-widest">Mis XV Años</p>
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-400 mb-0 sm:mb-2">
+        <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
           <p className="font-fleur-de-leah text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
         </div>
         
@@ -156,8 +156,9 @@ export default function HomePage() {
           <SectionCard 
             title="Código de Vestimenta" 
           >
+            <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
+
              <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
-            <p className="text-sm sm:text-base text-foreground/90">Formal</p>
           </SectionCard>
         </div>
 
