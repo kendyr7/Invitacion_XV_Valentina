@@ -225,7 +225,7 @@ export default function HomePage() {
                 <RsvpButton
                   phoneNumber="84642286" 
                   message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3 mb-2"
                 />
               </div>
               <div className="animate-in fade-in duration-1000 delay-[400ms] pt-4">
@@ -237,4 +237,3 @@ export default function HomePage() {
     </main>
   );
 }
-    
