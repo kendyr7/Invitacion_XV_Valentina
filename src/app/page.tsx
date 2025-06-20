@@ -18,10 +18,9 @@ import {
   CakeSlice,
   Moon, 
   PartyPopper,
-  Church,
   GlassWater,
   // Icons for the new timeline design based on the image provided
-  Martini, // Changed from Cocktail
+  Martini, 
   Brush, 
   Gem, 
   Camera,
@@ -35,19 +34,17 @@ export default function HomePage() {
   const audioSrc = "/audio/event-music.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00"; 
 
-  const iconSizeTimeline = 28; // Icon size for the new timeline
+  const iconSizeTimeline = 28; 
 
-  // Updated timelineEvents to match the structure/style of the image provided
-  // User will change text later.
   const timelineEventsNew = [
     { time: "2:00 PM", title: "Welcome Cocktails", icon: <Martini size={iconSizeTimeline} /> },
     { time: "3:00 PM", title: "Hair & Makeup", icon: <Brush size={iconSizeTimeline} /> },
-    { time: "4:00 PM", title: "Ceremony", icon: <Gem size={iconSizeTimeline} /> }, // Gem for rings
+    { time: "4:00 PM", title: "Ceremony", icon: <Gem size={iconSizeTimeline} /> }, 
     { time: "5:00 PM", title: "Photos", icon: <Camera size={iconSizeTimeline} /> },
     { time: "6:00 PM", title: "Dinner", icon: <Utensils size={iconSizeTimeline} /> },
-    { time: "7:00 PM", title: "Toast", icon: <Wine size={iconSizeTimeline} /> }, // Wine for champagne flutes
+    { time: "7:00 PM", title: "Toast", icon: <Wine size={iconSizeTimeline} /> }, 
     { time: "7:30 PM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} /> },
-    { time: "8:00 PM", title: "Dance", icon: <Disc3 size={iconSizeTimeline} /> }, // Disc3 for disco ball
+    { time: "8:00 PM", title: "Dance", icon: <Disc3 size={iconSizeTimeline} /> }, 
     { time: "10:00 PM", title: "Send Off", icon: <Car size={iconSizeTimeline} /> },
     { time: "10:30 PM", title: "Shuttle", icon: <Bus size={iconSizeTimeline} /> },
   ];
@@ -57,7 +54,7 @@ export default function HomePage() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-4 relative overflow-auto sm:overflow-hidden">
       <Image 
         src="https://placehold.co/1200x1800"
-        layout="fill" 
+        fill
         objectFit="cover" 
         alt="Elegant event background" 
         className="absolute inset-0 z-[-1] opacity-20 filter blur-sm" 
@@ -116,7 +113,7 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Church size={40} className="text-accent" /> 
+              <Image src="/church.png" alt="Iglesia Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Parroquia Jesús de la Divina Misericordia</p>
@@ -131,7 +128,7 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <GlassWater size={40} className="text-accent" />
+              <Image src="/champagne.png" alt="Champagne Glasses Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne glasses"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -144,21 +141,21 @@ export default function HomePage() {
           <SectionCard 
             title="Itinerario de Actividades" 
             icon={<ListChecks size={28} className="text-accent"/>}
-            contentClassName="px-0 pt-4 pb-4" // Adjusted padding for timeline
+            contentClassName="px-0 pt-4 pb-4" 
           >
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
-              {/* Central Vertical Line */}
+              
               {timelineEventsNew.length > 0 && (
                  <div className="absolute top-0 bottom-0 left-1/2 w-[1.5px] bg-primary -translate-x-1/2 z-0"></div>
               )}
-              <div className="space-y-0"> {/* No vertical space between items here, item controls its spacing */}
+              <div className="space-y-0"> 
                 {timelineEventsNew.map((event, index) => (
                   <ActivityTimelineItem 
                     key={index}
                     time={event.time}
                     title={event.title}
                     icon={event.icon}
-                    align={index % 2 === 0 ? 'left' : 'right'} // Alternating alignment
+                    align={index % 2 === 0 ? 'left' : 'right'} 
                   />
                 ))}
               </div>
@@ -210,3 +207,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+    
