@@ -1,5 +1,7 @@
+'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
 import MusicPlayer from '@/components/event/MusicPlayer';
 import CountdownTimer from '@/components/event/CountdownTimer';
 import RsvpButton from '@/components/event/RsvpButton';
@@ -7,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import SectionCard from '@/components/event/SectionCard';
 import ActivityTimelineItem from '@/components/event/ActivityTimelineItem';
 import EventDateDisplay from '@/components/event/EventDateDisplay';
+import { Input } from '@/components/ui/input';
 import { 
   Gift, 
   ListChecks,
@@ -27,6 +30,7 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
+  const [guestName, setGuestName] = useState('');
   const audioSrc = "/audio/event-music.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00"; 
 
@@ -41,6 +45,11 @@ export default function HomePage() {
     { time: "12:00 AM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
+
+  const baseMessage = "¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina.";
+  const confirmationMessage = guestName 
+    ? `¡Hola! Soy ${guestName.trim()}. Me encantaría confirmar mi asistencia al XV años de Valentina.` 
+    : baseMessage;
 
 
   return (
@@ -210,7 +219,7 @@ export default function HomePage() {
             data-ai-hint="floral decoration"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms]">
+              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
                 <Image
                     src="/whatsapp-50.png" 
                     alt="WhatsApp Icon"
@@ -222,10 +231,19 @@ export default function HomePage() {
                 <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest">
                   Confirmar Asistencia
                 </p>
+                <Input
+                  type="text"
+                  placeholder="Nombre y Apellido"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  className="mt-4 mb-3 bg-white/80 border-primary text-center w-full max-w-[280px] placeholder:text-foreground/50"
+                  aria-label="Tu nombre y apellido"
+                />
                 <RsvpButton
                   phoneNumber="84642286" 
-                  message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3 mb-2"
+                  message={confirmationMessage}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full"
+                  disabled={!guestName.trim()}
                 />
               </div>
               <div className="animate-in fade-in duration-1000 delay-[400ms] pt-4">
