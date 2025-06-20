@@ -54,10 +54,10 @@ export default function HomePage() {
         
         <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200 order-1">
           <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
-            <p>Hay momentos inolvidables que</p>
-            <p>se atesoran en el corazón para siempre</p>
-            <p>por esa razón quiero que compartas</p>
-            <p>conmigo éste dia tan especial</p>
+            <p>HAY MOMENTOS INOLVIDABLES QUE</p>
+            <p>SE ATESORAN EN EL CORAZÓN PARA SIEMPRE</p>
+            <p>POR ESA RAZÓN QUIERO QUE COMPARTAS</p>
+            <p>CONMIGO ÉSTE DIA TAN ESPECIAL</p>
           </CardContent>
         </Card>
 
@@ -74,9 +74,9 @@ export default function HomePage() {
 
         <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600 order-5">
           <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
-            <p>Con la bendición de Dios y el amor de</p>
-            <p>mis padres, te invito a celebrar con</p>
-            <p>alegría este momento tan especial</p>
+            <p>CON LA BENDICIÓN DE DIOS Y EL AMOR DE</p>
+            <p>MIS PADRES, TE INVITO A CELEBRAR CON</p>
+            <p>ALEGRÍA ESTE MOMENTO TAN ESPECIAL</p>
             <p className="font-headline text-base sm:text-lg text-accent mt-2 tracking-widest">MIS XV AÑOS</p>
           </CardContent>
         </Card>
@@ -104,8 +104,8 @@ export default function HomePage() {
               <Image src="/church.png" alt="Church Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building" />
             </div>
             <div className="mt-1 space-y-1 text-center">
-              <p className="flex items-center justify-center">PARROQUIA JESÚS DE LA DIVINA MISERICORDIA</p>
-              <p className="flex items-center justify-center"><i>MANAGUA, 5:00 PM</i></p>
+              <p className="flex items-center justify-center uppercase">Parroquia Jesús de la Divina Misericordia</p>
+              <p className="flex items-center justify-center uppercase"><i>Managua, 5:00 PM</i></p>
             </div>
           </SectionCard>
         </div>
@@ -121,8 +121,8 @@ export default function HomePage() {
               <Image src="/champagne.png" alt="Champagne Glasses Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne glasses celebration"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
-              <p className="flex items-center justify-center">CLUB TERRAZA, SALÓN AZOTEA</p>
-              <p className="flex items-center justify-center"><i>MANAGUA, 7:00 PM</i></p>
+              <p className="flex items-center justify-center uppercase">Club Terraza, Salón Azotea</p>
+              <p className="flex items-center justify-center uppercase"><i>Managua, 7:00 PM</i></p>
             </div>
           </SectionCard>
         </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
         <div className="order-10 w-full">
           <SectionCard 
             title="ITINERARIO DE ACTIVIDADES" 
-            icon={<ListChecks size={28} />}
+            icon={<ListChecks size={28} className="text-accent"/>}
             contentClassName="px-2 sm:px-4 pt-4"
             animationDelay="1100ms"
             titleClassName="uppercase"
@@ -156,15 +156,15 @@ export default function HomePage() {
             animationDelay="1200ms"
             titleClassName="uppercase"
           >
+            <p className="text-xs sm:text-sm text-foreground/70 uppercase">Formal</p>
             <Image src="/dress-code.png" alt="Código de Vestimenta Formal Elegante" width={150} height={150} className="mx-auto mb-3" data-ai-hint="formal attire" />
-            <p className="text-xs sm:text-sm text-foreground/70 uppercase">(EJ: TRAJE PARA CABALLEROS, VESTIDO LARGO O CÓCTEL PARA DAMAS). ¡QUEREMOS QUE BRILLES CON NOSOTROS!</p>
           </SectionCard>
         </div>
 
         <div className="order-12 w-full">
           <SectionCard 
             title="SUGERENCIA DE REGALOS" 
-            icon={<Gift size={28} />}
+            icon={<Gift size={28} className="text-accent"/>}
             animationDelay="1300ms"
             titleClassName="uppercase"
           >
@@ -192,11 +192,9 @@ export default function HomePage() {
         </div>
 
         <div className="order-last animate-in fade-in duration-1000 delay-[1500ms] pt-4">
-            <p className="font-body text-base sm:text-lg text-foreground/80">¡TE ESPERAMOS PARA CELEBRAR JUNTOS!</p>
+            <p className="font-body text-base sm:text-lg text-foreground/80 uppercase">¡TE ESPERAMOS PARA CELEBRAR JUNTOS!</p>
         </div>
       </div>
     </main>
   );
 }
-
-    
