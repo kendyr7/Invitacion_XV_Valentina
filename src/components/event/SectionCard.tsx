@@ -27,14 +27,14 @@ const SectionCard: React.FC<SectionCardProps> = ({ title, icon, children, locati
   };
 
   return (
-    <Card className={`w-full max-w-md bg-background/70 dark:bg-background/50 border-primary/30 shadow-xl backdrop-blur-sm animate-in fade-in duration-700 ${className}`} style={{ animationDelay: animationDelay }}>
+    <Card className={`w-full max-w-md bg-background/70 dark:bg-background/50 backdrop-blur-sm animate-in fade-in duration-700 ${className}`} style={{ animationDelay: animationDelay }}>
       <CardHeader className="pb-3 pt-5">
         <CardTitle className={`font-headline text-xl sm:text-2xl text-accent flex items-center justify-center text-center ${titleClassName}`}>
           {icon && <span className="mr-3 text-accent">{icon}</span>}
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className={`font-body text-sm sm:text-base text-foreground/90 space-y-2 ${contentClassName}`}>
+      <CardContent className={`font-body text-sm sm:text-base text-foreground/90 space-y-2 text-center ${contentClassName}`}>
         {children}
         {locationButton && (
           <div className="mt-4 text-center">

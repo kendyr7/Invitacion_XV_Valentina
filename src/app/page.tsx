@@ -7,7 +7,7 @@ import RsvpButton from '@/components/event/RsvpButton';
 import { Card, CardContent } from '@/components/ui/card';
 import SectionCard from '@/components/event/SectionCard';
 import ActivityTimelineItem from '@/components/event/ActivityTimelineItem';
-import EventDateDisplay from '@/components/event/EventDateDisplay'; // New import
+import EventDateDisplay from '@/components/event/EventDateDisplay';
 import { 
   Church, 
   PartyPopper, 
@@ -28,7 +28,7 @@ import {
 
 export default function HomePage() {
   const audioSrc = "/audio/event-music.mp3"; 
-  const eventTargetDate = "2025-08-01T19:00:00"; // Updated Event Date & Time
+  const eventTargetDate = "2025-08-01T19:00:00"; 
 
   const timelineEvents = [
     { time: "7:00 PM", title: "Bienvenida y Cóctel", icon: <Users size={18} />, description: "Recibimos a nuestros queridos invitados." },
@@ -106,9 +106,9 @@ export default function HomePage() {
           >
             <p>Acompáñanos en la emotiva ceremonia donde Valentina dará gracias.</p>
             <div className="mt-3 space-y-1 text-left pl-4">
-              <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Sábado, 27 de Julio, 2025</p> {/* This date might need updating based on new event date */}
-              <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> 5:00 PM</p>
-              <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Parroquia San Juan Bautista, Calle Falsa 123, Ciudad Corazón</p>
+              <p className="flex items-center justify-center sm:justify-start"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Viernes, 1 de Agosto, 2025</p>
+              <p className="flex items-center justify-center sm:justify-start"><Clock size={16} className="mr-2 text-primary shrink-0" /> 5:00 PM</p>
+              <p className="flex items-start justify-center sm:justify-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Parroquia San Juan Bautista, Calle Falsa 123, Ciudad Corazón</p>
             </div>
           </SectionCard>
         </div>
@@ -122,9 +122,9 @@ export default function HomePage() {
           >
             <p>Celebraremos con una fiesta llena de alegría, música y sorpresas.</p>
             <div className="mt-3 space-y-1 text-left pl-4">
-              <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Viernes, 1 de Agosto, 2025</p> {/* This date might need updating */}
-              <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> A partir de las 7:00 PM</p>
-              <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Salón Elegancia, Av. Siempreviva 742, Ciudad Corazón</p>
+              <p className="flex items-center justify-center sm:justify-start"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Viernes, 1 de Agosto, 2025</p>
+              <p className="flex items-center justify-center sm:justify-start"><Clock size={16} className="mr-2 text-primary shrink-0" /> A partir de las 7:00 PM</p>
+              <p className="flex items-start justify-center sm:justify-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Salón Elegancia, Av. Siempreviva 742, Ciudad Corazón</p>
             </div>
           </SectionCard>
         </div>
@@ -187,4 +187,3 @@ export default function HomePage() {
     </main>
   );
 }
-
