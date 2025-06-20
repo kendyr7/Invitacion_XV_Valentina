@@ -18,7 +18,7 @@ import {
   Users,
   Utensils,
   Milestone,
-  SparklesIcon as Sparkles, // Renamed to avoid conflict if any
+  SparklesIcon as Sparkles,
   Music2,
   CakeSlice,
   Moon
@@ -53,14 +53,11 @@ export default function HomePage() {
       
       <MusicPlayer audioSrc={audioSrc} />
 
-      <div className="z-10 flex flex-col items-center text-center space-y-6 sm:space-y-8 max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md p-4 sm:p-8 rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
+      <div 
+        className="z-10 flex flex-col items-center text-center space-y-6 sm:space-y-8 max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md p-4 sm:p-8 rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center"
+      >
         
-        <div className="animate-in fade-in duration-1000">
-          <h2 className="font-headline text-3xl sm:text-4xl text-accent-foreground">Valeria's</h2>
-          <h1 className="font-headline text-5xl sm:text-7xl text-primary mt-1">Sweet Sixteen</h1>
-        </div>
-
-        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
+        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200 order-1">
           <CardHeader className="pb-2">
             <CardTitle className="font-headline text-2xl sm:text-3xl text-accent">An Invitation</CardTitle>
           </CardHeader>
@@ -70,6 +67,20 @@ export default function HomePage() {
             <p>Your presence will make this celebration complete!</p>
           </CardContent>
         </Card>
+
+        <div className="flex flex-col items-center my-4 sm:my-6 animate-in fade-in duration-1000 delay-300 order-2">
+          <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
+          <p className="font-headline text-2xl sm:text-3xl text-accent mt-2">MIS XV AÑOS</p>
+        </div>
+
+        <div className="animate-in fade-in duration-1000 delay-400 order-3 mb-0 sm:mb-2">
+          <p className="font-headline text-4xl sm:text-5xl text-primary italic">Valentina Fletes</p>
+        </div>
+        
+        <div className="animate-in fade-in duration-1000 delay-500 order-4">
+          <h2 className="font-headline text-3xl sm:text-4xl text-accent-foreground">Valeria's</h2>
+          <h1 className="font-headline text-5xl sm:text-7xl text-primary mt-1">Sweet Sixteen</h1>
+        </div>
 
         <CountdownTimer targetDate={eventTargetDate} />
 
