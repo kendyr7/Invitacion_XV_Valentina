@@ -29,13 +29,13 @@ export default function HomePage() {
   const iconSizeTimeline = 28; 
 
   const timelineEventsNew = [
-    { time: "7:00 PM", title: "Bienvenida & brindis", icon: <Martini size={iconSizeTimeline} /> },
-    { time: "7:30 PM", title: "Vals & baile dedicatorio", icon: <Gem size={iconSizeTimeline} /> }, 
-    { time: "8:00 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} /> },
-    { time: "9:00 PM", title: "Bocadillos & Photoboth", icon: <Camera size={iconSizeTimeline} /> },
-    { time: "10:00 PM", title: "Fiesta con DJ", icon: <Disc3 size={iconSizeTimeline} /> }, 
-    { time: "12:00 AM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} /> },
-    { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} /> },
+    { time: "7:00 PM", title: "Bienvenida & brindis", icon: <Martini size={iconSizeTimeline} className="text-primary"/> },
+    { time: "7:30 PM", title: "Vals & baile dedicatorio", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "8:00 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} className="text-primary"/> },
+    { time: "9:00 PM", title: "Bocadillos & Photoboth", icon: <Camera size={iconSizeTimeline} className="text-primary"/> },
+    { time: "10:00 PM", title: "Fiesta con DJ", icon: <Disc3 size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "12:00 AM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
+    { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
 
 
@@ -70,7 +70,7 @@ export default function HomePage() {
         </div>
 
         <div className="animate-in fade-in duration-1000 delay-400 mb-0 sm:mb-2">
-          <p className="font-headline text-4xl sm:text-5xl text-primary italic">Valentina Fletes</p>
+          <p className="font-fleur-de-leah text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
         </div>
         
         <MusicPlayer audioSrc={audioSrc} className="animate-in fade-in duration-1000 delay-500" />
@@ -196,6 +196,4 @@ export default function HomePage() {
     </main>
   );
 }
-    
-
     
