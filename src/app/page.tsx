@@ -20,7 +20,7 @@ import {
   Camera,
   Disc3, 
   Car,
-  Palette, // Added Palette icon
+  Palette,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -162,13 +162,12 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="w-full animate-in fade-in duration-1000 delay-1300ms">
+        <div className="w-full animate-in fade-in duration-1000 delay-[1300ms]">
           <SectionCard
             title="Colores Reservados"
             icon={<Palette size={28} className="text-primary"/>}
           >
             <div className="flex justify-center space-x-3 mt-2">
-              {/* Replace these placeholders with your actual images from /public/colors/ */}
               <Image src="https://placehold.co/50x50.png" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
               <Image src="https://placehold.co/50x50.png" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
               <Image src="https://placehold.co/50x50.png" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
@@ -179,7 +178,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="w-full animate-in fade-in duration-1000 delay-1400ms">
+        <div className="w-full animate-in fade-in duration-1000 delay-[1400ms]">
           <SectionCard 
             title="Sugerencia de Regalos" 
             icon={<Gift size={28} className="text-primary"/>}
@@ -188,7 +187,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-1500ms">
+        <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[1500ms]">
            <Image
               src="/whatsapp-50.png" 
               alt="WhatsApp Icon"
@@ -207,13 +206,25 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-1600ms pt-4">
+        <div className="animate-in fade-in duration-1000 delay-[1600ms] pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-1700ms mb-4 sm:mb-6">
+        <div className="animate-in fade-in duration-1000 delay-[1700ms] mb-4 sm:mb-6">
           <p className="font-fleur-de-leah text-1xl sm:text-2xl text-primary">Muchas Gracias!</p>
         </div>
+      </div>
+      
+      {/* Decorative flowers at the bottom */}
+      <div className="w-full max-w-2xl mx-auto mt-10 mb-6 px-4 animate-in fade-in duration-1000 delay-[1900ms]">
+        <Image
+          src="/flores_bottom.png"
+          alt="Decorative flowers at the bottom"
+          width={1200} 
+          height={300} 
+          className="w-full h-auto object-contain"
+          data-ai-hint="floral border bottom"
+        />
       </div>
     </main>
   );
