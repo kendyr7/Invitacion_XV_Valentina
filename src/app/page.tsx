@@ -117,7 +117,7 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <GlassWater size={40} className="shrink-0 text-primary"/>
+              <Image src="/champagne.png" alt="Champagne Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
