@@ -10,32 +10,48 @@ import EventDateDisplay from '@/components/event/EventDateDisplay';
 import { 
   Gift, 
   ListChecks,
-  Users,
+  Users, 
   Utensils,
-  Milestone,
-  SparklesIcon as Sparkles,
+  Milestone, 
+  Sparkles as SparklesIcon, 
   Music2,
   CakeSlice,
-  Moon,
+  Moon, 
   PartyPopper,
   Church,
-  GlassWater
+  GlassWater,
+  // Icons for the new timeline design based on the image provided
+  Martini, // Changed from Cocktail
+  Brush, 
+  Gem, 
+  Camera,
+  Wine, 
+  Disc3, 
+  Car,
+  Bus
 } from 'lucide-react';
 
 export default function HomePage() {
   const audioSrc = "/audio/event-music.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00"; 
 
-  const timelineEvents = [
-    { time: "7:00 PM", title: "Bienvenida y Cóctel", icon: <Users size={18} />, description: "Recibimos a nuestros queridos invitados." },
-    { time: "8:00 PM", title: "Cena", icon: <Utensils size={18} />, description: "Disfrutemos de una deliciosa cena juntos." },
-    { time: "9:00 PM", title: "Vals y Palabras", icon: <Milestone size={18} />, description: "Un momento especial y emotivo." },
-    { time: "9:30 PM", title: "Show Sorpresa", icon: <Sparkles size={18} /> },
-    { time: "10:00 PM", title: "Apertura de Pista / Baile", icon: <Music2 size={18} />, description: "¡A bailar!" },
-    { time: "11:30 PM", title: "Pastel", icon: <CakeSlice size={18} />, description: "Celebremos con un dulce momento." },
-    { time: "12:00 AM", title: "¡La Fiesta Continúa!", icon: <PartyPopper size={18} /> },
-    { time: "2:00 AM", title: "Fin de Fiesta", icon: <Moon size={18} />, isLast: true },
+  const iconSizeTimeline = 28; // Icon size for the new timeline
+
+  // Updated timelineEvents to match the structure/style of the image provided
+  // User will change text later.
+  const timelineEventsNew = [
+    { time: "2:00 PM", title: "Welcome Cocktails", icon: <Martini size={iconSizeTimeline} /> },
+    { time: "3:00 PM", title: "Hair & Makeup", icon: <Brush size={iconSizeTimeline} /> },
+    { time: "4:00 PM", title: "Ceremony", icon: <Gem size={iconSizeTimeline} /> }, // Gem for rings
+    { time: "5:00 PM", title: "Photos", icon: <Camera size={iconSizeTimeline} /> },
+    { time: "6:00 PM", title: "Dinner", icon: <Utensils size={iconSizeTimeline} /> },
+    { time: "7:00 PM", title: "Toast", icon: <Wine size={iconSizeTimeline} /> }, // Wine for champagne flutes
+    { time: "7:30 PM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} /> },
+    { time: "8:00 PM", title: "Dance", icon: <Disc3 size={iconSizeTimeline} /> }, // Disc3 for disco ball
+    { time: "10:00 PM", title: "Send Off", icon: <Car size={iconSizeTimeline} /> },
+    { time: "10:30 PM", title: "Shuttle", icon: <Bus size={iconSizeTimeline} /> },
   ];
+
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-4 relative overflow-auto sm:overflow-hidden">
@@ -100,7 +116,6 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              {/* Using Lucide Church icon directly */}
               <Church size={40} className="text-accent" /> 
             </div>
             <div className="mt-1 space-y-1 text-center">
@@ -116,7 +131,6 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-               {/* Using Lucide GlassWater (mocking champagne) icon directly */}
               <GlassWater size={40} className="text-accent" />
             </div>
             <div className="mt-1 space-y-1 text-center">
@@ -130,19 +144,24 @@ export default function HomePage() {
           <SectionCard 
             title="Itinerario de Actividades" 
             icon={<ListChecks size={28} className="text-accent"/>}
-            contentClassName="px-2 sm:px-4 pt-4"
+            contentClassName="px-0 pt-4 pb-4" // Adjusted padding for timeline
           >
-            <div className="space-y-0">
-              {timelineEvents.map((event, index) => (
-                <ActivityTimelineItem 
-                  key={index}
-                  time={event.time}
-                  title={event.title}
-                  description={event.description}
-                  icon={event.icon}
-                  isLast={event.isLast}
-                />
-              ))}
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+              {/* Central Vertical Line */}
+              {timelineEventsNew.length > 0 && (
+                 <div className="absolute top-0 bottom-0 left-1/2 w-[1.5px] bg-primary -translate-x-1/2 z-0"></div>
+              )}
+              <div className="space-y-0"> {/* No vertical space between items here, item controls its spacing */}
+                {timelineEventsNew.map((event, index) => (
+                  <ActivityTimelineItem 
+                    key={index}
+                    time={event.time}
+                    title={event.title}
+                    icon={event.icon}
+                    align={index % 2 === 0 ? 'left' : 'right'} // Alternating alignment
+                  />
+                ))}
+              </div>
             </div>
           </SectionCard>
         </div>
@@ -167,7 +186,7 @@ export default function HomePage() {
 
         <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-1400">
            <Image
-              src="/whatsapp-50.png" // Ensure this image is in /public or /public/images
+              src="/whatsapp-50.png" 
               alt="WhatsApp Icon"
               width={50}
               height={50}
@@ -178,7 +197,7 @@ export default function HomePage() {
             Confirmar Asistencia
           </p>
           <RsvpButton
-            phoneNumber="84642286" // Replace with actual phone number
+            phoneNumber="84642286" 
             message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
           />
@@ -191,4 +210,3 @@ export default function HomePage() {
     </main>
   );
 }
-
