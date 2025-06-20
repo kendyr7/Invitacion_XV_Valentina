@@ -17,7 +17,9 @@ import {
   Music2,
   CakeSlice,
   Moon,
-  PartyPopper
+  PartyPopper,
+  Church,
+  GlassWater
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -51,7 +53,7 @@ export default function HomePage() {
         className="z-10 flex flex-col items-center text-center space-y-8 sm:space-y-10 max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md p-4 sm:p-8 rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center"
       >
         
-        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200 order-1">
+        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
           <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
             <p>Hay momentos inolvidables que</p>
             <p>se atesoran en el corazón para siempre.</p>
@@ -60,18 +62,18 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <div className="flex flex-col items-center my-2 sm:my-4 animate-in fade-in duration-1000 delay-300 order-2">
+        <div className="flex flex-col items-center my-2 sm:my-4 animate-in fade-in duration-1000 delay-300">
           <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
           <p className="font-headline text-2xl sm:text-3xl text-accent mt-2 tracking-widest">Mis XV Años</p>
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-400 order-3 mb-0 sm:mb-2">
+        <div className="animate-in fade-in duration-1000 delay-400 mb-0 sm:mb-2">
           <p className="font-headline text-4xl sm:text-5xl text-primary italic">Valentina Fletes</p>
         </div>
         
-        <MusicPlayer audioSrc={audioSrc} className="order-4 animate-in fade-in duration-1000 delay-500" />
+        <MusicPlayer audioSrc={audioSrc} className="animate-in fade-in duration-1000 delay-500" />
 
-        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600 order-5">
+        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600">
           <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
             <p>Con la bendición de Dios y el amor de</p>
             <p>mis padres, te invito a celebrar con</p>
@@ -85,20 +87,21 @@ export default function HomePage() {
           dayName="Viernes"
           dayNumber="1"
           year="2025"
-          className="order-6 animate-in fade-in duration-1000 delay-700"
+          className="animate-in fade-in duration-1000 delay-700"
         />
 
-        <div className="w-full max-w-md order-7 animate-in fade-in duration-1000 delay-800">
+        <div className="w-full max-w-md animate-in fade-in duration-1000 delay-800">
           <CountdownTimer targetDate={eventTargetDate} />
         </div>
         
-        <div className="order-8 w-full animate-in fade-in duration-1000 delay-900">
+        <div className="w-full animate-in fade-in duration-1000 delay-900">
           <SectionCard
             title="Ceremonia Religiosa"
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Image src="/church.png" alt="Church Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building" />
+              {/* Using Lucide Church icon directly */}
+              <Church size={40} className="text-accent" /> 
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Parroquia Jesús de la Divina Misericordia</p>
@@ -107,13 +110,14 @@ export default function HomePage() {
           </SectionCard>
         </div>
         
-        <div className="order-9 w-full animate-in fade-in duration-1000 delay-1000">
+        <div className="w-full animate-in fade-in duration-1000 delay-1000">
           <SectionCard 
             title="Recepción"
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Image src="/champagne.png" alt="Champagne Glasses Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne glasses celebration"/>
+               {/* Using Lucide GlassWater (mocking champagne) icon directly */}
+              <GlassWater size={40} className="text-accent" />
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -122,7 +126,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-10 w-full animate-in fade-in duration-1000 delay-1100">
+        <div className="w-full animate-in fade-in duration-1000 delay-1100">
           <SectionCard 
             title="Itinerario de Actividades" 
             icon={<ListChecks size={28} className="text-accent"/>}
@@ -143,7 +147,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-11 w-full animate-in fade-in duration-1000 delay-1200">
+        <div className="w-full animate-in fade-in duration-1000 delay-1200">
           <SectionCard 
             title="Código de Vestimenta" 
           >
@@ -152,7 +156,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-12 w-full animate-in fade-in duration-1000 delay-1300">
+        <div className="w-full animate-in fade-in duration-1000 delay-1300">
           <SectionCard 
             title="Sugerencia de Regalos" 
             icon={<Gift size={28} className="text-accent"/>}
@@ -161,9 +165,9 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-13 flex flex-col items-center animate-in fade-in duration-1000 delay-1400">
+        <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-1400">
            <Image
-              src="/whatsapp-50.png"
+              src="/whatsapp-50.png" // Ensure this image is in /public or /public/images
               alt="WhatsApp Icon"
               width={50}
               height={50}
@@ -174,16 +178,17 @@ export default function HomePage() {
             Confirmar Asistencia
           </p>
           <RsvpButton
-            phoneNumber="84642286" 
+            phoneNumber="84642286" // Replace with actual phone number
             message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
           />
         </div>
 
-        <div className="order-14 animate-in fade-in duration-1000 delay-1500 pt-4">
+        <div className="animate-in fade-in duration-1000 delay-1500 pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
       </div>
     </main>
   );
 }
+
