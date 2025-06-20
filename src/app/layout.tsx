@@ -4,7 +4,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Eventide Invite',
+  title: 'Invitacion XV Valentina',
   description: 'An elegant invitation to our special event.',
 };
 

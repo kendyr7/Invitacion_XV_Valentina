@@ -1,4 +1,4 @@
-# **App Name**: Eventide Invite
+# **App Name**: Invite XV Valentina
 
 ## Core Features:
 
