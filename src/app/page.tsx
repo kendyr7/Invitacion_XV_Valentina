@@ -220,21 +220,21 @@ export default function HomePage() {
         <div className="animate-in fade-in duration-1000 delay-[1600ms] pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
-      </div>
-      
-      <div className="relative w-full mt-auto">
-        <Image
-          src="/flowers_deco/flowers_deco.png"
-          alt="Decoración floral en la parte inferior"
-          width={1920}
-          height={400} 
-          className="w-full h-auto"
-          data-ai-hint="floral decoration"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="font-fleur-de-leah text-4xl sm:text-6xl text-white text-center drop-shadow-lg animate-in fade-in duration-1000">
-            ¡Muchas Gracias!
-          </p>
+        
+        <div className="relative w-full">
+            <Image
+            src="/flowers_deco/flowers_deco.png"
+            alt="Decoración floral en la parte inferior"
+            width={600}
+            height={150} 
+            className="w-full h-auto"
+            data-ai-hint="floral decoration"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+            <p className="font-fleur-de-leah text-4xl sm:text-6xl text-white text-center drop-shadow-lg animate-in fade-in duration-1000">
+                ¡Muchas Gracias!
+            </p>
+            </div>
         </div>
       </div>
     </main>
