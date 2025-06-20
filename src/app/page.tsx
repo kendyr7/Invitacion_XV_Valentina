@@ -193,6 +193,10 @@ export default function HomePage() {
         <div className="animate-in fade-in duration-1000 delay-1500 pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
+
+        <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
+          <p className="font-fleur-de-leah text-1xl sm:text-2xl text-primary">Muchas Gracias!</p>
+        </div>
       </div>
     </main>
   );
