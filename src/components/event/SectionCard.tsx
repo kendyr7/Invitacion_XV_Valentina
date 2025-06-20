@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react'; // Keep MapPin if locationButton is used
 
 interface SectionCardProps {
   title: string;
@@ -27,7 +27,10 @@ const SectionCard: React.FC<SectionCardProps> = ({ title, icon, children, locati
   };
 
   return (
-    <Card className={`w-full max-w-md bg-background/70 dark:bg-background/50 backdrop-blur-sm animate-in fade-in duration-700 ${className}`} style={{ animationDelay: animationDelay }}>
+    <Card 
+      className={`w-full max-w-md bg-transparent border-none shadow-none animate-in fade-in duration-700 mx-auto ${className}`} 
+      style={{ animationDelay: animationDelay }}
+    >
       <CardHeader className="pb-3 pt-5">
         <CardTitle className={`font-headline text-xl sm:text-2xl text-accent flex items-center justify-center text-center ${titleClassName}`}>
           {icon && <span className="mr-3 text-accent">{icon}</span>}

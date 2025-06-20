@@ -56,9 +56,9 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500">
         {[...Array(4)].map((_, i) => (
-          <div key={i} className="bg-accent/50 p-4 rounded-lg shadow-md">
-            <div className="text-3xl sm:text-4xl font-bold text-primary animate-pulse">--</div>
-            <div className="text-xs sm:text-sm text-accent-foreground uppercase tracking-wider">Loading...</div>
+          <div key={i} className="p-4 rounded-lg">
+            <div className="text-3xl sm:text-4xl font-bold text-accent animate-pulse">--</div>
+            <div className="text-xs sm:text-sm text-accent uppercase tracking-wider">Loading...</div>
           </div>
         ))}
       </div>
@@ -76,11 +76,11 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500 w-full max-w-md">
       {timerComponents.map((component, index) => (
         (component.value !== undefined) && (
-          <div key={index} className="bg-accent/30 p-3 sm:p-4 rounded-lg shadow-lg transform transition-all hover:scale-105">
-            <div className="text-3xl sm:text-5xl font-headline font-bold text-primary">
+          <div key={index} className="p-3 sm:p-4 rounded-lg transform transition-all hover:scale-105">
+            <div className="text-3xl sm:text-5xl font-headline font-bold text-accent">
               {String(component.value).padStart(2, '0')}
             </div>
-            <div className="text-xs sm:text-sm text-accent-foreground uppercase tracking-wider font-body">
+            <div className="text-xs sm:text-sm text-accent uppercase tracking-wider font-body">
               {component.label}
             </div>
           </div>
@@ -91,3 +91,4 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
 };
 
 export default CountdownTimer;
+
