@@ -9,13 +9,7 @@ import SectionCard from '@/components/event/SectionCard';
 import ActivityTimelineItem from '@/components/event/ActivityTimelineItem';
 import EventDateDisplay from '@/components/event/EventDateDisplay';
 import { 
-  Church, 
-  PartyPopper, 
   Gift, 
-  Shirt, 
-  CalendarDays, 
-  Clock, 
-  MapPin, 
   ListChecks,
   Users,
   Utensils,
@@ -23,7 +17,8 @@ import {
   SparklesIcon as Sparkles,
   Music2,
   CakeSlice,
-  Moon
+  Moon,
+  PartyPopper
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -31,14 +26,14 @@ export default function HomePage() {
   const eventTargetDate = "2025-08-01T19:00:00"; 
 
   const timelineEvents = [
-    { time: "7:00 PM", title: "Bienvenida y Cóctel", icon: <Users size={18} />, description: "Recibimos a nuestros queridos invitados." },
-    { time: "8:00 PM", title: "Cena", icon: <Utensils size={18} />, description: "Disfrutemos de una deliciosa cena juntos." },
-    { time: "9:00 PM", title: "Vals y Palabras", icon: <Milestone size={18} />, description: "Un momento especial y emotivo." },
-    { time: "9:30 PM", title: "Show Sorpresa", icon: <Sparkles size={18} /> },
-    { time: "10:00 PM", title: "Apertura de Pista / Baile", icon: <Music2 size={18} />, description: "¡A bailar!" },
-    { time: "11:30 PM", title: "Pastel", icon: <CakeSlice size={18} />, description: "Celebremos con un dulce momento." },
-    { time: "12:00 AM", title: "¡La Fiesta Continúa!", icon: <PartyPopper size={18} /> },
-    { time: "2:00 AM", title: "Fin de Fiesta", icon: <Moon size={18} />, isLast: true },
+    { time: "7:00 PM", title: "BIENVENIDA Y CÓCTEL", icon: <Users size={18} />, description: "RECIBIMOS A NUESTROS QUERIDOS INVITADOS." },
+    { time: "8:00 PM", title: "CENA", icon: <Utensils size={18} />, description: "DISFRUTEMOS DE UNA DELICIOSA CENA JUNTOS." },
+    { time: "9:00 PM", title: "VALS Y PALABRAS", icon: <Milestone size={18} />, description: "UN MOMENTO ESPECIAL Y EMOTIVO." },
+    { time: "9:30 PM", title: "SHOW SORPRESA", icon: <Sparkles size={18} /> },
+    { time: "10:00 PM", title: "APERTURA DE PISTA / BAILE", icon: <Music2 size={18} />, description: "¡A BAILAR!" },
+    { time: "11:30 PM", title: "PASTEL", icon: <CakeSlice size={18} />, description: "CELEBREMOS CON UN DULCE MOMENTO." },
+    { time: "12:00 AM", title: "¡LA FIESTA CONTINÚA!", icon: <PartyPopper size={18} /> },
+    { time: "2:00 AM", title: "FIN DE FIESTA", icon: <Moon size={18} />, isLast: true },
   ];
 
   return (
@@ -58,7 +53,7 @@ export default function HomePage() {
       >
         
         <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200 order-1">
-          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1">
+          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
             <p>Hay momentos inolvidables que</p>
             <p>se atesoran en el corazón para siempre</p>
             <p>por esa razón quiero que compartas</p>
@@ -78,7 +73,7 @@ export default function HomePage() {
         <MusicPlayer audioSrc={audioSrc} className="order-4 animate-in fade-in duration-1000 delay-500" />
 
         <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600 order-5">
-          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1">
+          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
             <p>Con la bendición de Dios y el amor de</p>
             <p>mis padres, te invito a celebrar con</p>
             <p>alegría este momento tan especial</p>
@@ -99,42 +94,46 @@ export default function HomePage() {
         </div>
         
         <div className="order-8 w-full">
-          <SectionCard 
-            title="Ceremonia Religiosa" 
-            icon={<Church size={28} />}
+          <SectionCard
+            title="CEREMONIA RELIGIOSA"
+            locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
             animationDelay="900ms"
+            titleClassName="uppercase"
           >
-            <p>Acompáñanos en la emotiva ceremonia donde Valentina dará gracias.</p>
-            <div className="mt-3 space-y-1 text-left pl-4">
-              <p className="flex items-center justify-center sm:justify-start"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Viernes, 1 de Agosto, 2025</p>
-              <p className="flex items-center justify-center sm:justify-start"><Clock size={16} className="mr-2 text-primary shrink-0" /> 5:00 PM</p>
-              <p className="flex items-start justify-center sm:justify-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Parroquia San Juan Bautista, Calle Falsa 123, Ciudad Corazón</p>
+            <div className="flex flex-col items-center space-y-2 mb-3">
+              <Image src="/church.png" alt="Church Icon" width={40} height={40} className="shrink-0" data-ai-hint="church building" />
+            </div>
+            <div className="mt-1 space-y-1 text-center">
+              <p className="flex items-center justify-center">PARROQUIA JESÚS DE LA DIVINA MISERICORDIA</p>
+              <p className="flex items-center justify-center"><i>MANAGUA, 5:00 PM</i></p>
             </div>
           </SectionCard>
         </div>
         
         <div className="order-9 w-full">
           <SectionCard 
-            title="Recepción" 
-            icon={<PartyPopper size={28} />} 
-            locationButton={{ text: "Ver Ubicación", url: "https://maps.google.com/?q=Elegance+Event+Hall,+123+Celebration+Ave,+Anytown" }}
+            title="RECEPCIÓN"
+            locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
             animationDelay="1000ms"
+            titleClassName="uppercase"
           >
-            <p>Celebraremos con una fiesta llena de alegría, música y sorpresas.</p>
-            <div className="mt-3 space-y-1 text-left pl-4">
-              <p className="flex items-center justify-center sm:justify-start"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Viernes, 1 de Agosto, 2025</p>
-              <p className="flex items-center justify-center sm:justify-start"><Clock size={16} className="mr-2 text-primary shrink-0" /> A partir de las 7:00 PM</p>
-              <p className="flex items-start justify-center sm:justify-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Salón Elegancia, Av. Siempreviva 742, Ciudad Corazón</p>
+            <div className="flex flex-col items-center space-y-2 mb-3">
+              <Image src="/champagne.png" alt="Champagne Glasses Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne glasses celebration"/>
+            </div>
+            <div className="mt-1 space-y-1 text-center">
+              <p className="flex items-center justify-center">CLUB TERRAZA, SALÓN AZOTEA</p>
+              <p className="flex items-center justify-center"><i>MANAGUA, 7:00 PM</i></p>
             </div>
           </SectionCard>
         </div>
 
         <div className="order-10 w-full">
           <SectionCard 
-            title="Itinerario de Actividades" 
+            title="ITINERARIO DE ACTIVIDADES" 
             icon={<ListChecks size={28} />}
             contentClassName="px-2 sm:px-4 pt-4"
             animationDelay="1100ms"
+            titleClassName="uppercase"
           >
             <div className="space-y-0">
               {timelineEvents.map((event, index) => (
@@ -153,37 +152,51 @@ export default function HomePage() {
 
         <div className="order-11 w-full">
           <SectionCard 
-            title="Código de Vestimenta" 
-            icon={<Shirt size={28} />}
+            title="CÓDIGO DE VESTIMENTA" 
             animationDelay="1200ms"
+            titleClassName="uppercase"
           >
-            <p>Formal Elegante</p>
-            <p className="text-xs sm:text-sm text-foreground/70">(Ej: Traje para caballeros, vestido largo o cóctel para damas). ¡Queremos que brilles con nosotros!</p>
+            <Image src="/dress-code.png" alt="Código de Vestimenta Formal Elegante" width={150} height={150} className="mx-auto mb-3" data-ai-hint="formal attire" />
+            <p className="text-xs sm:text-sm text-foreground/70 uppercase">(EJ: TRAJE PARA CABALLEROS, VESTIDO LARGO O CÓCTEL PARA DAMAS). ¡QUEREMOS QUE BRILLES CON NOSOTROS!</p>
           </SectionCard>
         </div>
 
         <div className="order-12 w-full">
           <SectionCard 
-            title="Sugerencia de Regalos" 
+            title="SUGERENCIA DE REGALOS" 
             icon={<Gift size={28} />}
             animationDelay="1300ms"
+            titleClassName="uppercase"
           >
-            <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valentina agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
+            <p className="uppercase">TU PRESENCIA ES NUESTRO MAYOR REGALO. SI ADEMÁS DESEAS OBSEQUIARNOS ALGO, VALENTINA AGRADECERÍA CONTRIBUCIONES MONETARIAS PARA SUS FUTUROS PROYECTOS Y ESTUDIOS. HABRÁ UN BUZÓN DISPONIBLE DURANTE EL EVENTO.</p>
           </SectionCard>
         </div>
 
-        <div className="order-13">
+        <div className="order-13 flex flex-col items-center animate-in fade-in duration-1000 delay-[1400ms]">
+           <Image
+              src="/whatsapp-50.png"
+              alt="WhatsApp Icon"
+              width={50}
+              height={50}
+              className="shrink-0"
+              data-ai-hint="whatsapp logo"
+            />
+          <p className="text-center mt-2 font-headline text-lg text-accent tracking-widest uppercase">
+            CONFIRMAR ASISTENCIA
+          </p>
           <RsvpButton
-            phoneNumber="15551234567" 
-            message="¡Hola! Me encantaría confirmar mi asistencia al Sweet Sixteen de Valeria."
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-[1400ms]"
+            phoneNumber="84642286" 
+            message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
           />
         </div>
 
-        <p className="font-body text-xs text-muted-foreground pt-4 animate-in fade-in duration-1000 delay-[1500ms] order-14">
-          ¡Te esperamos para celebrar juntos este día tan especial!
-        </p>
+        <div className="order-last animate-in fade-in duration-1000 delay-[1500ms] pt-4">
+            <p className="font-body text-base sm:text-lg text-foreground/80">¡TE ESPERAMOS PARA CELEBRAR JUNTOS!</p>
+        </div>
       </div>
     </main>
   );
 }
+
+    

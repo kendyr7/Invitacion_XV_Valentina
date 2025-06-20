@@ -23,7 +23,7 @@ const RsvpButton: React.FC<RsvpButtonProps> = ({ phoneNumber, message, className
       className={className || "bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-900"}
       aria-label="Confirm attendance via WhatsApp"
     >
-      Confirmar Asistencia
+      Confirmar aquí
       <ExternalLink className="ml-2 h-5 w-5" />
     </Button>
   );
