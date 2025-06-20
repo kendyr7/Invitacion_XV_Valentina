@@ -37,16 +37,13 @@ export default function HomePage() {
   const iconSizeTimeline = 28; 
 
   const timelineEventsNew = [
-    { time: "2:00 PM", title: "Welcome Cocktails", icon: <Martini size={iconSizeTimeline} /> },
-    { time: "3:00 PM", title: "Hair & Makeup", icon: <Brush size={iconSizeTimeline} /> },
-    { time: "4:00 PM", title: "Ceremony", icon: <Gem size={iconSizeTimeline} /> }, 
-    { time: "5:00 PM", title: "Photos", icon: <Camera size={iconSizeTimeline} /> },
-    { time: "6:00 PM", title: "Dinner", icon: <Utensils size={iconSizeTimeline} /> },
-    { time: "7:00 PM", title: "Toast", icon: <Wine size={iconSizeTimeline} /> }, 
-    { time: "7:30 PM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} /> },
-    { time: "8:00 PM", title: "Dance", icon: <Disc3 size={iconSizeTimeline} /> }, 
-    { time: "10:00 PM", title: "Send Off", icon: <Car size={iconSizeTimeline} /> },
-    { time: "10:30 PM", title: "Shuttle", icon: <Bus size={iconSizeTimeline} /> },
+    { time: "7:00 PM", title: "Bienvenida & brindis", icon: <Martini size={iconSizeTimeline} /> },
+    { time: "7:30 PM", title: "Vals & baile dedicatorio", icon: <Gem size={iconSizeTimeline} /> }, 
+    { time: "8:00 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} /> },
+    { time: "9:00 PM", title: "Bocadillos & Photoboth", icon: <Camera size={iconSizeTimeline} /> },
+    { time: "10:00 PM", title: "Fiesta con DJ", icon: <Disc3 size={iconSizeTimeline} /> }, 
+    { time: "12:00 AM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} /> },
+    { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} /> },
   ];
 
 
@@ -167,8 +164,10 @@ export default function HomePage() {
           <SectionCard 
             title="Código de Vestimenta" 
           >
-            <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={150} height={150} className="mx-auto mb-3" data-ai-hint="formal attire" />
+            <div>
             <p className="text-xs sm:text-sm text-foreground/70">Formal</p>
+            </div>
+            <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
           </SectionCard>
         </div>
 
