@@ -82,82 +82,98 @@ export default function HomePage() {
           <h1 className="font-headline text-5xl sm:text-7xl text-primary mt-1">Sweet Sixteen</h1>
         </div>
 
-        <CountdownTimer targetDate={eventTargetDate} />
-
-        <SectionCard 
-          title="Ceremonia Religiosa" 
-          icon={<Church size={28} />}
-          animationDelay="600ms"
-        >
-          <p>Acompáñanos en la emotiva ceremonia donde Valeria dará gracias.</p>
-          <div className="mt-3 space-y-1 text-left pl-4">
-            <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Sábado, 27 de Julio, 2025</p>
-            <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> 5:00 PM</p>
-            <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Parroquia San Juan Bautista, Calle Falsa 123, Ciudad Corazón</p>
-          </div>
-        </SectionCard>
+        <div className="w-full max-w-md order-5">
+          <CountdownTimer targetDate={eventTargetDate} />
+        </div>
         
-        <SectionCard 
-          title="Recepción" 
-          icon={<PartyPopper size={28} />} 
-          locationButton={{ text: "Ver Ubicación", url: "https://maps.google.com/?q=Elegance+Event+Hall,+123+Celebration+Ave,+Anytown" }}
-          animationDelay="700ms"
-        >
-          <p>Celebraremos con una fiesta llena de alegría, música y sorpresas.</p>
-          <div className="mt-3 space-y-1 text-left pl-4">
-            <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Sábado, 27 de Julio, 2025</p>
-            <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> A partir de las 7:00 PM</p>
-            <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Salón Elegancia, Av. Siempreviva 742, Ciudad Corazón</p>
-          </div>
-        </SectionCard>
 
-        <SectionCard 
-          title="Itinerario de Actividades" 
-          icon={<ListChecks size={28} />}
-          contentClassName="px-2 sm:px-4 pt-4"
-          animationDelay="800ms"
-        >
-          <div className="space-y-0">
-            {timelineEvents.map((event, index) => (
-              <ActivityTimelineItem 
-                key={index}
-                time={event.time}
-                title={event.title}
-                description={event.description}
-                icon={event.icon}
-                isLast={event.isLast}
-              />
-            ))}
-          </div>
-        </SectionCard>
+        <div className="order-6 w-full">
+          <SectionCard 
+            title="Ceremonia Religiosa" 
+            icon={<Church size={28} />}
+            animationDelay="700ms"
+          >
+            <p>Acompáñanos en la emotiva ceremonia donde Valeria dará gracias.</p>
+            <div className="mt-3 space-y-1 text-left pl-4">
+              <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Sábado, 27 de Julio, 2025</p>
+              <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> 5:00 PM</p>
+              <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Parroquia San Juan Bautista, Calle Falsa 123, Ciudad Corazón</p>
+            </div>
+          </SectionCard>
+        </div>
+        
+        <div className="order-7 w-full">
+          <SectionCard 
+            title="Recepción" 
+            icon={<PartyPopper size={28} />} 
+            locationButton={{ text: "Ver Ubicación", url: "https://maps.google.com/?q=Elegance+Event+Hall,+123+Celebration+Ave,+Anytown" }}
+            animationDelay="800ms"
+          >
+            <p>Celebraremos con una fiesta llena de alegría, música y sorpresas.</p>
+            <div className="mt-3 space-y-1 text-left pl-4">
+              <p className="flex items-center"><CalendarDays size={16} className="mr-2 text-primary shrink-0" /> Sábado, 27 de Julio, 2025</p>
+              <p className="flex items-center"><Clock size={16} className="mr-2 text-primary shrink-0" /> A partir de las 7:00 PM</p>
+              <p className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-primary shrink-0" /> Salón Elegancia, Av. Siempreviva 742, Ciudad Corazón</p>
+            </div>
+          </SectionCard>
+        </div>
 
-        <SectionCard 
-          title="Código de Vestimenta" 
-          icon={<Shirt size={28} />}
-          animationDelay="900ms"
-        >
-          <p>Formal Elegante</p>
-          <p className="text-xs sm:text-sm text-foreground/70">(Ej: Traje para caballeros, vestido largo o cóctel para damas). ¡Queremos que brilles con nosotros!</p>
-        </SectionCard>
+        <div className="order-8 w-full">
+          <SectionCard 
+            title="Itinerario de Actividades" 
+            icon={<ListChecks size={28} />}
+            contentClassName="px-2 sm:px-4 pt-4"
+            animationDelay="900ms"
+          >
+            <div className="space-y-0">
+              {timelineEvents.map((event, index) => (
+                <ActivityTimelineItem 
+                  key={index}
+                  time={event.time}
+                  title={event.title}
+                  description={event.description}
+                  icon={event.icon}
+                  isLast={event.isLast}
+                />
+              ))}
+            </div>
+          </SectionCard>
+        </div>
 
-        <SectionCard 
-          title="Sugerencia de Regalos" 
-          icon={<Gift size={28} />}
-          animationDelay="1000ms"
-        >
-          <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valeria agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
-        </SectionCard>
+        <div className="order-9 w-full">
+          <SectionCard 
+            title="Código de Vestimenta" 
+            icon={<Shirt size={28} />}
+            animationDelay="1000ms"
+          >
+            <p>Formal Elegante</p>
+            <p className="text-xs sm:text-sm text-foreground/70">(Ej: Traje para caballeros, vestido largo o cóctel para damas). ¡Queremos que brilles con nosotros!</p>
+          </SectionCard>
+        </div>
 
-        <RsvpButton
-          phoneNumber="15551234567" 
-          message="¡Hola! Me encantaría confirmar mi asistencia al Sweet Sixteen de Valeria."
-          className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-[1100ms]"
-        />
+        <div className="order-10 w-full">
+          <SectionCard 
+            title="Sugerencia de Regalos" 
+            icon={<Gift size={28} />}
+            animationDelay="1100ms"
+          >
+            <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valeria agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
+          </SectionCard>
+        </div>
 
-        <p className="font-body text-xs text-muted-foreground pt-4 animate-in fade-in duration-1000 delay-[1200ms]">
+        <div className="order-11">
+          <RsvpButton
+            phoneNumber="15551234567" 
+            message="¡Hola! Me encantaría confirmar mi asistencia al Sweet Sixteen de Valeria."
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-[1200ms]"
+          />
+        </div>
+
+        <p className="font-body text-xs text-muted-foreground pt-4 animate-in fade-in duration-1000 delay-[1300ms] order-12">
           ¡Te esperamos para celebrar juntos este día tan especial!
         </p>
       </div>
     </main>
   );
 }
+
