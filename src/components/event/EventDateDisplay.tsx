@@ -21,7 +21,7 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
 }) => {
   return (
     <div className={cn("flex flex-col items-center text-center w-full max-w-xs mx-auto", className)}>
-      <p className="font-body text-sm sm:text-base text-accent uppercase tracking-widest">
+      <p className="font-body text-sm sm:text-base text-primary uppercase tracking-widest">
         {monthName}
       </p>
       <div className="w-3/4 h-px bg-primary my-2 sm:my-3" />
@@ -42,3 +42,5 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
 };
 
 export default EventDateDisplay;
+
+    

@@ -10,24 +10,16 @@ import EventDateDisplay from '@/components/event/EventDateDisplay';
 import { 
   Gift, 
   ListChecks,
-  Users, 
   Utensils,
-  Milestone, 
   Sparkles as SparklesIcon, 
-  Music2,
   CakeSlice,
-  Moon, 
   PartyPopper,
   GlassWater,
-  // Icons for the new timeline design based on the image provided
   Martini, 
-  Brush, 
   Gem, 
   Camera,
-  Wine, 
   Disc3, 
   Car,
-  Bus
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -74,7 +66,7 @@ export default function HomePage() {
 
         <div className="flex flex-col items-center my-2 sm:my-4 animate-in fade-in duration-1000 delay-300">
           <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
-          <p className="font-headline text-2xl sm:text-3xl text-accent mt-2 tracking-widest">Mis XV Años</p>
+          <p className="font-headline text-2xl sm:text-3xl text-primary mt-2 tracking-widest">Mis XV Años</p>
         </div>
 
         <div className="animate-in fade-in duration-1000 delay-400 mb-0 sm:mb-2">
@@ -88,7 +80,7 @@ export default function HomePage() {
             <p>Con la bendición de Dios y el amor de</p>
             <p>mis padres, te invito a celebrar con</p>
             <p>alegría este momento tan especial.</p>
-            <p className="font-headline text-base sm:text-lg text-accent mt-2 tracking-widest">Mis XV Años</p>
+            <p className="font-headline text-base sm:text-lg text-primary mt-2 tracking-widest">Mis XV Años</p>
           </CardContent>
         </Card>
 
@@ -125,7 +117,7 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Image src="/champagne.png" alt="Champagne Glasses Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne glasses"/>
+              <GlassWater size={40} className="shrink-0 text-primary"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -137,7 +129,7 @@ export default function HomePage() {
         <div className="w-full animate-in fade-in duration-1000 delay-1100">
           <SectionCard 
             title="Itinerario de Actividades" 
-            icon={<ListChecks size={28} className="text-accent"/>}
+            icon={<ListChecks size={28} className="text-primary"/>}
             contentClassName="px-0 pt-4 pb-4" 
           >
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
@@ -164,17 +156,15 @@ export default function HomePage() {
           <SectionCard 
             title="Código de Vestimenta" 
           >
-            <div>
-            <p className="text-xs sm:text-sm text-foreground/70">Formal</p>
-            </div>
-            <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
+             <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
+            <p className="text-sm sm:text-base text-foreground/90">Formal</p>
           </SectionCard>
         </div>
 
         <div className="w-full animate-in fade-in duration-1000 delay-1300">
           <SectionCard 
             title="Sugerencia de Regalos" 
-            icon={<Gift size={28} className="text-accent"/>}
+            icon={<Gift size={28} className="text-primary"/>}
           >
             <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valentina agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
           </SectionCard>
@@ -189,13 +179,13 @@ export default function HomePage() {
               className="shrink-0"
               data-ai-hint="whatsapp logo"
             />
-          <p className="text-center mt-2 font-headline text-lg text-accent tracking-widest">
+          <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest">
             Confirmar Asistencia
           </p>
           <RsvpButton
             phoneNumber="84642286" 
             message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
           />
         </div>
 
@@ -206,5 +196,6 @@ export default function HomePage() {
     </main>
   );
 }
+    
 
     

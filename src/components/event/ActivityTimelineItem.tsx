@@ -13,18 +13,18 @@ interface ActivityTimelineItemProps {
 const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title, icon, align }) => {
   const eventDetails = (
     <div className={cn(
-      "flex flex-col w-full px-1", // Added padding for content
+      "flex flex-col w-full px-1", 
       align === 'left' ? 'items-end text-right' : 'items-start text-left'
     )}>
-      <div className="text-accent mb-1 sm:mb-2">{icon}</div>
+      <div className="text-primary mb-1 sm:mb-2">{icon}</div>
       <h4 className="font-headline text-[0.8rem] sm:text-xs md:text-sm text-primary font-semibold uppercase leading-tight">{title}</h4>
       <p className="font-body text-[0.7rem] sm:text-[0.75rem] text-foreground/80 leading-tight">{time}</p>
     </div>
   );
 
-  // Gutter width for connector line and dot
+  
   const gutterWidth = "w-10 sm:w-12 md:w-16"; 
-  // Content pane width, calculated to leave space for gutter
+  
   const contentPaneWidth = "w-[calc(50%-1.25rem)] sm:w-[calc(50%-1.5rem)] md:w-[calc(50%-2rem)]";
 
 
@@ -60,3 +60,5 @@ const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title
 };
 
 export default ActivityTimelineItem;
+
+    
