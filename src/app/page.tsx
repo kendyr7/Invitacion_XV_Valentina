@@ -20,6 +20,7 @@ import {
   Camera,
   Disc3, 
   Car,
+  Palette, // Added Palette icon
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -117,7 +118,7 @@ export default function HomePage() {
             locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <Image src="/champagne.png" alt="Champagne Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne"/>
+              <GlassWater size={40} className="text-primary shrink-0"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -156,13 +157,29 @@ export default function HomePage() {
           <SectionCard 
             title="Código de Vestimenta" 
           >
-            <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
-
              <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
+             <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
           </SectionCard>
         </div>
 
-        <div className="w-full animate-in fade-in duration-1000 delay-1300">
+        <div className="w-full animate-in fade-in duration-1000 delay-1300ms">
+          <SectionCard
+            title="Colores Reservados"
+            icon={<Palette size={28} className="text-primary"/>}
+          >
+            <div className="flex justify-center space-x-3 mt-2">
+              {/* Replace these placeholders with your actual images from /public/colors/ */}
+              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+            </div>
+            <p className="text-xs text-foreground/70 mt-3 px-4">
+              Con cariño, te pedimos considerar estos tonos como reservados para la quinceañera y su corte, permitiéndoles brillar en este día especial.
+            </p>
+          </SectionCard>
+        </div>
+
+        <div className="w-full animate-in fade-in duration-1000 delay-1400ms">
           <SectionCard 
             title="Sugerencia de Regalos" 
             icon={<Gift size={28} className="text-primary"/>}
@@ -171,7 +188,7 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-1400">
+        <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-1500ms">
            <Image
               src="/whatsapp-50.png" 
               alt="WhatsApp Icon"
@@ -190,11 +207,11 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-1500 pt-4">
+        <div className="animate-in fade-in duration-1000 delay-1600ms pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
 
-        <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
+        <div className="animate-in fade-in duration-1000 delay-1700ms mb-4 sm:mb-6">
           <p className="font-fleur-de-leah text-1xl sm:text-2xl text-primary">Muchas Gracias!</p>
         </div>
       </div>
