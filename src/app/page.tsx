@@ -44,7 +44,7 @@ export default function HomePage() {
 
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-4 relative overflow-auto sm:overflow-hidden">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground relative overflow-auto sm:overflow-hidden">
       <Image 
         src="https://placehold.co/1200x1800"
         fill
@@ -220,26 +220,24 @@ export default function HomePage() {
         <div className="animate-in fade-in duration-1000 delay-[1600ms] pt-4">
             <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
         </div>
-
-        <div className="animate-in fade-in duration-1000 delay-[1700ms] mb-4 sm:mb-6">
-          <p className="font-fleur-de-leah text-1xl sm:text-2xl text-primary">Muchas Gracias!</p>
-        </div>
-
-        {/* Decorative flowers at the bottom, now inside the card */}
-        {/* <div className="w-full mt-6 animate-in fade-in duration-1000 delay-[1800ms]">
-          <Image
-            src="/flowers_deco/"
-            alt=""
-            width={1200} 
-            height={300} 
-            className="w-full h-auto object-contain"
-          />
-        </div> */}
       </div>
       
+      <div className="relative w-full mt-auto">
+        <Image
+          src="/flowers_deco/flowers_deco.png"
+          alt="Decoración floral en la parte inferior"
+          width={1920}
+          height={400} 
+          className="w-full h-auto"
+          data-ai-hint="floral decoration"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="font-fleur-de-leah text-4xl sm:text-6xl text-white text-center drop-shadow-lg animate-in fade-in duration-1000">
+            ¡Muchas Gracias!
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
-    
-
     
