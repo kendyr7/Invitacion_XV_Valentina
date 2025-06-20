@@ -1,9 +1,10 @@
 
+
 import Image from 'next/image';
 import MusicPlayer from '@/components/event/MusicPlayer';
 import CountdownTimer from '@/components/event/CountdownTimer';
 import RsvpButton from '@/components/event/RsvpButton';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import SectionCard from '@/components/event/SectionCard';
 import ActivityTimelineItem from '@/components/event/ActivityTimelineItem';
 import { 
@@ -51,47 +52,50 @@ export default function HomePage() {
         data-ai-hint="elegant floral"
       />
       
-      <MusicPlayer audioSrc={audioSrc} />
+      {/* The old MusicPlayer button is removed from here */}
 
       <div 
         className="z-10 flex flex-col items-center text-center space-y-6 sm:space-y-8 max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md p-4 sm:p-8 rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center"
       >
         
         <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200 order-1">
-          <CardHeader className="pb-2">
-            <CardTitle className="font-headline text-2xl sm:text-3xl text-accent">An Invitation</CardTitle>
-          </CardHeader>
-          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-3">
-            <p>With immense joy and excitement, we invite you to celebrate a very special milestone in Valeria's life.</p>
-            <p>Join us for an unforgettable evening of music, laughter, and cherished memories as she steps into this beautiful new chapter.</p>
-            <p>Your presence will make this celebration complete!</p>
+          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1">
+            <p>Hay momentos inolvidables que</p>
+            <p>se atesoran en el corazón para siempre</p>
+            <p>por esa razón quiero que compartas</p>
+            <p>conmigo éste dia tan especial</p>
           </CardContent>
         </Card>
 
-        <div className="flex flex-col items-center my-4 sm:my-6 animate-in fade-in duration-1000 delay-300 order-2">
+        <div className="flex flex-col items-center my-2 sm:my-4 animate-in fade-in duration-1000 delay-300 order-2">
           <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
-          <p className="font-headline text-2xl sm:text-3xl text-accent mt-2">MIS XV AÑOS</p>
+          <p className="font-headline text-2xl sm:text-3xl text-accent mt-2 tracking-widest">MIS XV AÑOS</p>
         </div>
 
         <div className="animate-in fade-in duration-1000 delay-400 order-3 mb-0 sm:mb-2">
           <p className="font-headline text-4xl sm:text-5xl text-primary italic">Valentina Fletes</p>
         </div>
         
-        <div className="animate-in fade-in duration-1000 delay-500 order-4">
-          <h2 className="font-headline text-3xl sm:text-4xl text-accent-foreground">Valeria's</h2>
-          <h1 className="font-headline text-5xl sm:text-7xl text-primary mt-1">Sweet Sixteen</h1>
-        </div>
+        <MusicPlayer audioSrc={audioSrc} className="order-4 animate-in fade-in duration-1000 delay-500" />
 
-        <div className="w-full max-w-md order-5">
+        <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600 order-5">
+          <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1">
+            <p>Con la bendición de Dios y el amor de</p>
+            <p>mis padres, te invito a celebrar con</p>
+            <p>alegría este momento tan especial</p>
+            <p className="font-headline text-base sm:text-lg text-accent mt-2 tracking-widest">MIS XV AÑOS</p>
+          </CardContent>
+        </Card>
+
+        <div className="w-full max-w-md order-6 animate-in fade-in duration-1000 delay-700">
           <CountdownTimer targetDate={eventTargetDate} />
         </div>
         
-
-        <div className="order-6 w-full">
+        <div className="order-7 w-full">
           <SectionCard 
             title="Ceremonia Religiosa" 
             icon={<Church size={28} />}
-            animationDelay="700ms"
+            animationDelay="800ms"
           >
             <p>Acompáñanos en la emotiva ceremonia donde Valeria dará gracias.</p>
             <div className="mt-3 space-y-1 text-left pl-4">
@@ -102,12 +106,12 @@ export default function HomePage() {
           </SectionCard>
         </div>
         
-        <div className="order-7 w-full">
+        <div className="order-8 w-full">
           <SectionCard 
             title="Recepción" 
             icon={<PartyPopper size={28} />} 
             locationButton={{ text: "Ver Ubicación", url: "https://maps.google.com/?q=Elegance+Event+Hall,+123+Celebration+Ave,+Anytown" }}
-            animationDelay="800ms"
+            animationDelay="900ms"
           >
             <p>Celebraremos con una fiesta llena de alegría, música y sorpresas.</p>
             <div className="mt-3 space-y-1 text-left pl-4">
@@ -118,12 +122,12 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-8 w-full">
+        <div className="order-9 w-full">
           <SectionCard 
             title="Itinerario de Actividades" 
             icon={<ListChecks size={28} />}
             contentClassName="px-2 sm:px-4 pt-4"
-            animationDelay="900ms"
+            animationDelay="1000ms"
           >
             <div className="space-y-0">
               {timelineEvents.map((event, index) => (
@@ -140,40 +144,39 @@ export default function HomePage() {
           </SectionCard>
         </div>
 
-        <div className="order-9 w-full">
+        <div className="order-10 w-full">
           <SectionCard 
             title="Código de Vestimenta" 
             icon={<Shirt size={28} />}
-            animationDelay="1000ms"
+            animationDelay="1100ms"
           >
             <p>Formal Elegante</p>
             <p className="text-xs sm:text-sm text-foreground/70">(Ej: Traje para caballeros, vestido largo o cóctel para damas). ¡Queremos que brilles con nosotros!</p>
           </SectionCard>
         </div>
 
-        <div className="order-10 w-full">
+        <div className="order-11 w-full">
           <SectionCard 
             title="Sugerencia de Regalos" 
             icon={<Gift size={28} />}
-            animationDelay="1100ms"
+            animationDelay="1200ms"
           >
             <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valeria agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
           </SectionCard>
         </div>
 
-        <div className="order-11">
+        <div className="order-12">
           <RsvpButton
             phoneNumber="15551234567" 
             message="¡Hola! Me encantaría confirmar mi asistencia al Sweet Sixteen de Valeria."
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-[1200ms]"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-headline text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 animate-in fade-in duration-1000 delay-[1300ms]"
           />
         </div>
 
-        <p className="font-body text-xs text-muted-foreground pt-4 animate-in fade-in duration-1000 delay-[1300ms] order-12">
+        <p className="font-body text-xs text-muted-foreground pt-4 animate-in fade-in duration-1000 delay-[1400ms] order-13">
           ¡Te esperamos para celebrar juntos este día tan especial!
         </p>
       </div>
     </main>
   );
 }
-
