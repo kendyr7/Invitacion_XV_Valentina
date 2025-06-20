@@ -63,7 +63,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
         ))}
       </div>
     );
-  }
+ }
   
   const timerComponents = [
     { label: 'Days', value: timeLeft.days },
@@ -77,8 +77,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
       {timerComponents.map((component, index) => (
         (component.value !== undefined) && (
           <div key={index} className="p-3 sm:p-4 rounded-lg transform transition-all hover:scale-105">
-            <div className="text-3xl sm:text-5xl font-headline font-bold text-primary">
-              {String(component.value).padStart(2, '0')}
+            <div className="text-3xl sm:text-5xl font-headline font-bold text-primary mb-2">
+              {String(component.value).padStart(2, '0')}&nbsp;
             </div>
             <div className="text-xs sm:text-sm text-primary uppercase tracking-wider font-body">
               {component.label}
