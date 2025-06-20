@@ -123,7 +123,7 @@ export default function HomePage() {
             titleClassName="text-primary"
           >
             <div className="flex flex-col items-center space-y-2 mb-3">
-              <GlassWater size={40} className="text-primary shrink-0" />
+              <Image src="/champagne.png" alt="champagne Icon" width={40} height={40} className="shrink-0" data-ai-hint="champagne"/>
             </div>
             <div className="mt-1 space-y-1 text-center">
               <p className="flex items-center justify-center">Club Terraza, Salón Azotea</p>
@@ -164,8 +164,9 @@ export default function HomePage() {
             title="Código de Vestimenta"
             titleClassName="text-primary"
           >
+            <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
+
              <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
-             <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
           </SectionCard>
         </div>
 
@@ -225,16 +226,15 @@ export default function HomePage() {
         </div>
 
         {/* Decorative flowers at the bottom, now inside the card */}
-        <div className="w-full mt-6 animate-in fade-in duration-1000 delay-[1800ms]">
+        {/* <div className="w-full mt-6 animate-in fade-in duration-1000 delay-[1800ms]">
           <Image
-            src="/flowers_deco/flores bottom.png"
-            alt="Decorative flowers at the bottom"
+            src="/flowers_deco/"
+            alt=""
             width={1200} 
             height={300} 
             className="w-full h-auto object-contain"
-            data-ai-hint="floral border bottom"
           />
-        </div>
+        </div> */}
       </div>
       
     </main>
