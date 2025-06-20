@@ -168,9 +168,9 @@ export default function HomePage() {
             icon={<Palette size={28} className="text-primary"/>}
           >
             <div className="flex justify-center space-x-3 mt-2">
-              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
-              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
-              <Image src="https://placehold.co/50x50.png" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+              <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+              <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+              <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
             </div>
             <p className="text-xs text-foreground/70 mt-3 px-4">
               Con cariño, te pedimos considerar estos tonos como reservados para la quinceañera y su corte, permitiéndoles brillar en este día especial.
@@ -213,20 +213,23 @@ export default function HomePage() {
         <div className="animate-in fade-in duration-1000 delay-[1700ms] mb-4 sm:mb-6">
           <p className="font-fleur-de-leah text-1xl sm:text-2xl text-primary">Muchas Gracias!</p>
         </div>
+
+        {/* Decorative flowers at the bottom, now inside the card */}
+        <div className="w-full max-w-2xl mx-auto mt-6 mb-0 px-0 animate-in fade-in duration-1000 delay-[1800ms]">
+          <Image
+            src="/flores_bottom.png"
+            alt="Decorative flowers at the bottom"
+            width={1200} 
+            height={300} 
+            className="w-full h-auto object-contain"
+            data-ai-hint="floral border bottom"
+          />
+        </div>
       </div>
       
-      {/* Decorative flowers at the bottom */}
-      <div className="w-full max-w-2xl mx-auto mt-10 mb-6 px-4 animate-in fade-in duration-1000 delay-[1900ms]">
-        <Image
-          src="/flores_bottom.png"
-          alt="Decorative flowers at the bottom"
-          width={1200} 
-          height={300} 
-          className="w-full h-auto object-contain"
-          data-ai-hint="floral border bottom"
-        />
-      </div>
     </main>
   );
 }
+    
+
     
