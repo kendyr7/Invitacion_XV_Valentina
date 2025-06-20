@@ -46,7 +46,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground relative overflow-auto sm:overflow-hidden">
       <Image 
-        src="https://placehold.co/1200x1800"
+        src="/"
         fill
         objectFit="cover" 
         alt="Elegant event background" 
@@ -198,29 +198,6 @@ export default function HomePage() {
               <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valentina agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
             </SectionCard>
           </div>
-
-          <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[1500ms]">
-             <Image
-                src="/whatsapp-50.png" 
-                alt="WhatsApp Icon"
-                width={50}
-                height={50}
-                className="shrink-0"
-                data-ai-hint="whatsapp logo"
-              />
-            <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest">
-              Confirmar Asistencia
-            </p>
-            <RsvpButton
-              phoneNumber="84642286" 
-              message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
-            />
-          </div>
-
-          <div className="animate-in fade-in duration-1000 delay-[1600ms] pt-4">
-              <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
-          </div>
         </div>
         
         <div className="relative w-full">
@@ -232,10 +209,28 @@ export default function HomePage() {
             className="w-full h-auto"
             data-ai-hint="floral decoration"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-            <p className="font-fleur-de-leah text-4xl sm:text-6xl text-white text-center drop-shadow-lg animate-in fade-in duration-1000">
-                ¡Muchas Gracias!
-            </p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms]">
+                <Image
+                    src="/whatsapp-50.png" 
+                    alt="WhatsApp Icon"
+                    width={50}
+                    height={50}
+                    className="shrink-0"
+                    data-ai-hint="whatsapp logo"
+                  />
+                <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest">
+                  Confirmar Asistencia
+                </p>
+                <RsvpButton
+                  phoneNumber="84642286" 
+                  message="¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina."
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 mt-3"
+                />
+              </div>
+              <div className="animate-in fade-in duration-1000 delay-[400ms] pt-4">
+                <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
+              </div>
             </div>
         </div>
       </div>
