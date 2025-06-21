@@ -70,12 +70,12 @@ export default function HomePage() {
         <Image
           src="/flowers_deco/left_flowers.png"
           alt="Decoración floral superior izquierda"
-          width={150}
-          height={150}
-          className="absolute top-0 left-0 animate-in fade-in duration-1000 delay-100"
+          width={1280}
+          height={953}
+          className="absolute top-0 left-0 opacity-80 z-0 animate-in fade-in duration-1000 delay-100"
           data-ai-hint="floral corner decoration"
         />
-        <div className="flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
+        <div className="relative z-10 flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
         
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
             <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
@@ -122,8 +122,8 @@ export default function HomePage() {
             <Image
               src="/flowers_deco/Pink_Flower.png"
               alt="Pink Flower Decoration"
-              width={100}
-              height={100}
+              width={400}
+              height={242}
               data-ai-hint="pink flower"
             />
           </div>
