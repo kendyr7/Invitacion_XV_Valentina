@@ -51,6 +51,12 @@ export default function HomePage() {
     ? `¡Hola! Soy ${guestName.trim()}. Me encantaría confirmar mi asistencia al XV años de Valentina.` 
     : baseMessage;
 
+  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    const img = e.target as HTMLImageElement;
+    img.style.width = '200px';
+    img.style.height = '200px';
+  };
+
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground relative overflow-auto sm:overflow-hidden">
@@ -75,7 +81,7 @@ export default function HomePage() {
           className="absolute top-0 left-0 opacity-80 z-0 animate-in fade-in duration-1000 delay-100"
           data-ai-hint="floral corner decoration"
         />
-        <div className="relative z-10 flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
+        <div className="mt-12 relative z-10 flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
         
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
             <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
@@ -205,11 +211,11 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <div className="flex justify-center space-x-3 mt-2">
-                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
-                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
-                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
-              </div>
-              <p className="text-xs text-foreground/70 mt-3 px-4">
+                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
+                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
+                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
+              </div> <br />
+              <p className="text-foreground/70 mt-3 px-4">
                 Con cariño, te pedimos considerar estos tonos como reservados para la quinceañera y su corte, permitiéndoles brillar en este día especial.
               </p>
             </SectionCard>
