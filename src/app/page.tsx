@@ -65,8 +65,16 @@ export default function HomePage() {
       />
       
       <div 
-        className="z-10 flex flex-col items-center text-center max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center overflow-hidden"
+        className="relative z-10 flex flex-col items-center text-center max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center overflow-hidden"
       >
+        <Image
+          src="/flowers_deco/left_flowers.png"
+          alt="Decoración floral superior izquierda"
+          width={150}
+          height={150}
+          className="absolute top-0 left-0 animate-in fade-in duration-1000 delay-100"
+          data-ai-hint="floral corner decoration"
+        />
         <div className="flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
         
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
@@ -210,16 +218,16 @@ export default function HomePage() {
         </div>
         
         <div className="relative w-full">
-            <Image
-            src="/flowers_deco/flowers_deco.png"
-            alt="Decoración floral en la parte inferior"
-            width={600}
-            height={150} 
-            className="w-full h-auto"
-            data-ai-hint="floral decoration"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
+          <Image
+          src="/flowers_deco/flowers_deco.png"
+          alt="Decoración floral en la parte inferior"
+          width={600}
+          height={150} 
+          className="w-full h-auto"
+          data-ai-hint="floral decoration"
+          />
+            <div className="absolute inset-0 flex flex-col items-center p-4 pt-8 sm:pt-10">
+              <div className="mt-3 flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
                 <Image
                     src="/whatsapp-50.png" 
                     alt="WhatsApp Icon"
@@ -228,7 +236,7 @@ export default function HomePage() {
                     className="shrink-0"
                     data-ai-hint="whatsapp logo"
                   />
-                <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest">
+                <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest mt-3 pt-3 sm:pt-3">
                   Confirmar Asistencia
                 </p>
                 <Input
@@ -246,8 +254,8 @@ export default function HomePage() {
                   disabled={!guestName.trim()}
                 />
               </div>
-              <div className="animate-in fade-in duration-1000 delay-[400ms] pt-4">
-                <p className="font-body text-base sm:text-lg text-foreground/80">¡Te esperamos para celebrar juntos!</p>
+              <div className="animate-in fade-in duration-1000 delay-[400ms] mt-12 pt-11 sm:pt-15">
+                <p className="font-body text-base sm:text-lg text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
               </div>
             </div>
         </div>

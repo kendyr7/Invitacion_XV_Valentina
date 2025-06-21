@@ -1,7 +1,6 @@
-
 "use client";
 
-import type { FC } from 'react';
+import type { FC } from "react";
 import { cn } from "@/lib/utils";
 
 interface EventDateDisplayProps {
@@ -9,6 +8,7 @@ interface EventDateDisplayProps {
   dayName: string;
   dayNumber: string;
   year: string;
+  time?: string;
   className?: string;
 }
 
@@ -17,30 +17,47 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
   dayName,
   dayNumber,
   year,
+  time = "7:00 PM",
   className,
 }) => {
   return (
-    <div className={cn("flex flex-col items-center text-center w-full max-w-xs mx-auto", className)}>
-      <p className="font-body text-sm sm:text-base text-primary uppercase tracking-widest">
+    <div className={cn("flex flex-col items-center text-center w-full max-w-xs mx-auto text-gray-700", className)}>
+      
+      {/* MONTH */}
+      <p className="uppercase tracking-widest text-sm sm:text-base font-body mb-2">
         {monthName}
       </p>
-      <div className="w-3/4 h-px bg-primary my-2 sm:my-3" />
+
+      {/* MIDDLE ROW */}
       <div className="flex items-center justify-between w-full">
-        <p className="font-body text-xs sm:text-sm text-foreground/80 uppercase w-1/3 text-left">
-          {dayName}
-        </p>
-        <p className="font-headline text-5xl sm:text-7xl text-primary italic mx-2">
-          {dayNumber}
-        </p>
-        <p className="font-body text-xs sm:text-sm text-foreground/80 uppercase w-1/3 text-right">
-          {year}
-        </p>
+        {/* LEFT - DAY NAME with LINES */}
+        <div className="flex-1 flex flex-col items-center">
+          <div className="w-full border-t border-gray-400 mb-1"></div>
+          <p className="uppercase text-xs sm:text-sm font-body">{dayName}</p>
+          <div className="w-full border-t border-gray-400 mt-1"></div>
+        </div>
+
+        {/* CENTER - DATE NUMBER */}
+        <div className="px-4">
+          <p className="text-5xl sm:text-6xl font-headline text-gray-800">
+            {dayNumber}
+          </p>
+        </div>
+
+        {/* RIGHT - YEAR with LINES */}
+        <div className="flex-1 flex flex-col items-center">
+          <div className="w-full border-t border-gray-400 mb-1"></div>
+          <p className="text-xs sm:text-sm font-body">{year}</p>
+          <div className="w-full border-t border-gray-400 mt-1"></div>
+        </div>
       </div>
-      <div className="w-3/4 h-px bg-primary my-2 sm:my-3" />
+
+      {/* TIME */}
+      <p className="uppercase tracking-wide text-xs sm:text-sm font-body mt-3">
+        {time}
+      </p>
     </div>
   );
 };
 
 export default EventDateDisplay;
-
-    

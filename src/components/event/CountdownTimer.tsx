@@ -75,8 +75,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500 w-full max-w-md">
       {timerComponents.map((component, index) => (
-        (component.value !== undefined) && (
-          <div key={index} className="p-3 sm:p-4 rounded-lg transform transition-all hover:scale-105">
+        component.value !== undefined && (
+          <div key={index} className="p-3 sm:p-4 rounded-lg transform transition-all hover:scale-120">
             <div className="text-3xl sm:text-5xl font-headline font-bold text-primary mb-2">
               {String(component.value).padStart(2, '0')}&nbsp;
             </div>
