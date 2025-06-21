@@ -20,12 +20,8 @@ const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (currentItemRef) {
-            observer.unobserve(currentItemRef); // Animate only once
-          }
-        }
+        // Set visibility based on whether the element is intersecting with the viewport
+        setIsVisible(entry.isIntersecting);
       },
       {
         root: null, // Use the viewport as the root
@@ -102,5 +98,3 @@ const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title
 };
 
 export default ActivityTimelineItem;
-
-    
