@@ -74,7 +74,7 @@ export default function HomePage() {
         className="relative z-10 flex flex-col items-center text-center max-w-2xl w-full bg-background/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-xl shadow-2xl my-8 animate-in fade-in slide-in-from-bottom-10 duration-700 bg-[url('/paper-texture.jpg')] bg-cover bg-center overflow-hidden"
       >
         <Image
-          src="/flowers_deco/left_flowers.png"
+          src="/flowers_deco/flowers.png"
           alt="Decoración floral superior izquierda"
           width={1280}
           height={953}
@@ -126,7 +126,7 @@ export default function HomePage() {
 
           <div className="animate-in fade-in duration-1000 delay-900">
             <Image
-              src="/flowers_deco/Pink_Flower.png"
+              src="/flowers_deco/pink_flower_d.png"
               alt="Pink Flower Decoration"
               width={400}
               height={242}
