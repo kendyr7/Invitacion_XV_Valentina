@@ -117,8 +117,18 @@ export default function HomePage() {
           <div className="w-full max-w-md animate-in fade-in duration-1000 delay-800">
             <CountdownTimer targetDate={eventTargetDate} />
           </div>
+
+          <div className="animate-in fade-in duration-1000 delay-900">
+            <Image
+              src="/flowers_deco/Pink_Flower.png"
+              alt="Pink Flower Decoration"
+              width={100}
+              height={100}
+              data-ai-hint="pink flower"
+            />
+          </div>
           
-          <div className="w-full animate-in fade-in duration-1000 delay-900">
+          <div className="w-full animate-in fade-in duration-1000 delay-1000">
             <SectionCard
               title="Ceremonia Religiosa"
               locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/urnxoQk9w1md1kYGA" }}
@@ -134,7 +144,7 @@ export default function HomePage() {
             </SectionCard>
           </div>
           
-          <div className="w-full animate-in fade-in duration-1000 delay-1000">
+          <div className="w-full animate-in fade-in duration-1000 delay-1100">
             <SectionCard 
               title="Recepción"
               locationButton={{ text: "Ver Ubicación", url: "https://maps.app.goo.gl/2nyhPou1JRjuhLdq9" }}
@@ -150,7 +160,7 @@ export default function HomePage() {
             </SectionCard>
           </div>
 
-          <div className="w-full animate-in fade-in duration-1000 delay-1100">
+          <div className="w-full animate-in fade-in duration-1000 delay-1200">
             <SectionCard 
               title="Itinerario de Actividades" 
               icon={<ListChecks size={28} className="text-primary"/>}
@@ -177,7 +187,7 @@ export default function HomePage() {
             </SectionCard>
           </div>
 
-          <div className="w-full animate-in fade-in duration-1000 delay-1200">
+          <div className="w-full animate-in fade-in duration-1000 delay-[1300ms]">
             <SectionCard 
               title="Código de Vestimenta"
               titleClassName="text-primary"
@@ -188,7 +198,7 @@ export default function HomePage() {
             </SectionCard>
           </div>
 
-          <div className="w-full animate-in fade-in duration-1000 delay-[1300ms]">
+          <div className="w-full animate-in fade-in duration-1000 delay-[1400ms]">
             <SectionCard
               title="Colores Reservados"
               icon={<Palette size={28} className="text-primary"/>}
@@ -206,7 +216,7 @@ export default function HomePage() {
           </div>
 
 
-          <div className="w-full animate-in fade-in duration-1000 delay-[1400ms]">
+          <div className="w-full animate-in fade-in duration-1000 delay-[1500ms]">
             <SectionCard 
               title="Sugerencia de Regalos" 
               icon={<Gift size={28} className="text-primary"/>}
