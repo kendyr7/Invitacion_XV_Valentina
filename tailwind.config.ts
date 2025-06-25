@@ -14,6 +14,7 @@ export default {
         body: ['Crimson Text', 'serif'],
         headline: ['Crimson Text', 'serif'],
         'fleur-de-leah': ['Fleur De Leah', 'cursive'],
+        delistan: ['Delistan', 'cursive'],
         code: ['monospace'],
       },
       colors: {

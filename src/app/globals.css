@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Delistan';
+  src: url('/fonts/Delistan-nAAm4.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   :root {
     --background: 0 0% 96.1%; /* Light Gray #F5F5F5 - Unchanged */

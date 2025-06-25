@@ -98,7 +98,7 @@ export default function HomePage() {
           </div>
 
           <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
-            <p className="font-fleur-de-leah text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
+            <p className="font-delistan text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
           </div>
           
           <MusicPlayer audioSrc={audioSrc} autoPlay={true} className="animate-in fade-in duration-1000 delay-500" />
