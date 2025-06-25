@@ -85,10 +85,11 @@ export default function HomePage() {
         
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
             <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
-              <p>Hay momentos inolvidables que</p>
-              <p>se atesoran en el corazón para siempre.</p>
-              <p>Por esa razón quiero que compartas</p>
-              <p>conmigo éste día tan especial.</p>
+              <br/>
+              <p>Hay sueños que se viven una sola vez…</p>
+              <p>y este es uno de ellos.</p>
+              <br/>
+              <p>Te invito a compartir conmigo <br/>este día tan especial</p>
             </CardContent>
           </Card>
 
@@ -98,7 +99,7 @@ export default function HomePage() {
           </div>
 
           <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
-            <p className="font-delistan text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
+            <p className="font-delistan text-6xl sm:text-8xl text-primary">Valentina Fletes</p>
           </div>
           
           <MusicPlayer audioSrc={audioSrc} autoPlay={true} className="animate-in fade-in duration-1000 delay-500" />
@@ -106,8 +107,8 @@ export default function HomePage() {
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600">
             <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
               <p>Con la bendición de Dios y el amor de</p>
-              <p>mis padres, te invito a celebrar con</p>
-              <p>alegría este momento tan especial.</p>
+              <p>mis padres, te espero con ilusión para</p>
+              <p>compartir este día tan soñado.</p>
               <p className="font-headline text-base sm:text-lg text-primary mt-2 tracking-widest">Mis XV Años</p>
             </CardContent>
           </Card>
