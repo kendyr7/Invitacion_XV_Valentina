@@ -31,7 +31,7 @@ import {
 
 export default function HomePage() {
   const [guestName, setGuestName] = useState('');
-  const audioSrc = "/audio/event-music.mp3"; 
+  const audioSrc = "/audio/paradise-coldplay.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00"; 
 
   const iconSizeTimeline = 28; 
@@ -101,7 +101,7 @@ export default function HomePage() {
             <p className="font-fleur-de-leah text-5xl sm:text-7xl text-primary">Valentina Fletes</p>
           </div>
           
-          <MusicPlayer audioSrc={audioSrc} className="animate-in fade-in duration-1000 delay-500" />
+          <MusicPlayer audioSrc={audioSrc} autoPlay={true} className="animate-in fade-in duration-1000 delay-500" />
 
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600">
             <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">

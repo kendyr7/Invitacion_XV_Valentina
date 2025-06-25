@@ -10,18 +10,45 @@ import { cn } from '@/lib/utils';
 interface MusicPlayerProps {
   audioSrc: string;
   className?: string;
+  autoPlay?: boolean;
 }
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className }) => {
+const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className, autoPlay = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isClient, setIsClient] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hasAutoPlayed = useRef(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const togglePlayPause = useCallback(async () => {
+    if (!audioRef.current) {
+      console.warn("Audio player not initialized yet or audioSrc is invalid.");
+      return;
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        console.log('Attempting to play. Current src:', audioRef.current.src, 'Ready state:', audioRef.current.readyState);
+        if (audioRef.current.readyState === 0) { // HAVE_NOTHING
+            console.warn("Audio source not ready (readyState is 0). Attempting to load...");
+            audioRef.current.load(); // Try to load it again
+        }
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.error("Error caught during play():", error);
+        setIsPlaying(false);
+      }
+    }
+  }, [isPlaying]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && audioSrc && isClient) {
@@ -29,7 +56,21 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className }) => {
       audio.preload = "metadata";
       audio.loop = false;
       audioRef.current = audio;
+      hasAutoPlayed.current = false; // Reset on src change
 
+      const handleCanPlay = async () => {
+        if (audioRef.current && autoPlay && !hasAutoPlayed.current) {
+          hasAutoPlayed.current = true; // Attempt autoplay only once
+          try {
+            await audioRef.current.play();
+            setIsPlaying(true);
+          } catch (error) {
+            console.error("Autoplay was prevented by the browser.", error);
+            setIsPlaying(false); // Update state if autoplay fails
+          }
+        }
+      };
+      
       const handleLoadedMetadata = () => {
         if (audioRef.current) {
           setDuration(audioRef.current.duration);
@@ -57,9 +98,9 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className }) => {
           console.error("Audio error code:", audioRef.current.error.code, "message:", audioRef.current.error.message);
         }
         setIsPlaying(false);
-        // You could set an error state here to display a message to the user
       };
       
+      audio.addEventListener('canplay', handleCanPlay);
       audio.addEventListener('loadedmetadata', handleLoadedMetadata);
       audio.addEventListener('timeupdate', handleTimeUpdate);
       audio.addEventListener('ended', handleEnded);
@@ -68,6 +109,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className }) => {
       audio.load(); // Explicitly call load
 
       return () => {
+        audio.removeEventListener('canplay', handleCanPlay);
         audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
         audio.removeEventListener('timeupdate', handleTimeUpdate);
         audio.removeEventListener('ended', handleEnded);
@@ -88,32 +130,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className }) => {
         console.warn('MusicPlayer: audioSrc is not provided.');
       }
     }
-  }, [audioSrc, isClient]);
-
-  const togglePlayPause = useCallback(async () => {
-    if (!audioRef.current) {
-      console.warn("Audio player not initialized yet or audioSrc is invalid.");
-      return;
-    }
-
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      try {
-        console.log('Attempting to play. Current src:', audioRef.current.src, 'Ready state:', audioRef.current.readyState);
-        if (audioRef.current.readyState === 0) { // HAVE_NOTHING
-            console.warn("Audio source not ready (readyState is 0). Attempting to load...");
-            audioRef.current.load(); // Try to load it again
-        }
-        await audioRef.current.play();
-        setIsPlaying(true);
-      } catch (error) {
-        console.error("Error caught during play():", error);
-        setIsPlaying(false);
-      }
-    }
-  }, [isPlaying]);
+  }, [audioSrc, isClient, autoPlay]);
 
   const handleSeek = (value: number[]) => {
     if (audioRef.current) {
