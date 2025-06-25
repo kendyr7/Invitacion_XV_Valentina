@@ -13,11 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 340 66% 62%; /* New Primary: #df5b85 */
-    --primary-foreground: 0 0% 98%; /* White text on pink */
+    --primary: 0 50% 80%; /* New Primary: #e7b1b1 */
+    --primary-foreground: 0 0% 10%; /* Dark text for contrast */
 
-    --secondary: 340 66% 94%; /* A very light pink for backgrounds */
-    --secondary-foreground: 340 66% 30%; /* A darker pink for text on secondary */
+    --secondary: 0 50% 95%; /* A very light pink for backgrounds */
+    --secondary-foreground: 0 50% 30%; /* A darker pink for text on secondary */
 
     --muted: 0 0% 90%; /* Slightly darker gray for muted elements - Unchanged */
     --muted-foreground: 0 0% 45.1%;
@@ -30,7 +30,7 @@
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 340 66% 62%; /* New Ring: Matches new primary */
+    --ring: 0 50% 80%; /* New Ring: Matches new primary */
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -59,11 +59,11 @@
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 340 66% 70%; /* Lighter pink for dark mode */
-    --primary-foreground: 340 66% 10%; /* Darker pink for text */
+    --primary: 0 50% 70%; /* Adjusted pink for dark mode */
+    --primary-foreground: 0 50% 10%; /* Darker pink for text */
 
-    --secondary: 340 60% 15%; /* Dark pink for secondary background */
-    --secondary-foreground: 340 66% 85%; /* Light pink for text */
+    --secondary: 0 50% 15%; /* Dark pink for secondary background */
+    --secondary-foreground: 0 50% 85%; /* Light pink for text */
 
     --muted: 0 0% 14.9%; /* Unchanged */
     --muted-foreground: 0 0% 63.9%;
@@ -76,7 +76,7 @@
 
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 340 66% 70%; /* New Dark Ring: Matches new dark primary */
+    --ring: 0 50% 70%; /* New Dark Ring: Matches new dark primary */
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
