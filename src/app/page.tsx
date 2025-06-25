@@ -84,7 +84,7 @@ export default function HomePage() {
         <div className="mt-12 relative z-10 flex flex-col items-center text-center space-y-8 sm:space-y-10 p-4 sm:p-8">
         
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-200">
-            <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
+            <CardContent className="font-body text-lg sm:text-xl text-foreground/80 space-y-1 pt-6">
               <br/>
               <p>Hay sueños que se viven una sola vez…</p>
               <p>y este es uno de ellos.</p>
@@ -95,21 +95,21 @@ export default function HomePage() {
 
           <div className="flex flex-col items-center mt-8 mb-6 animate-in fade-in duration-1000 delay-300">
             <Image src="/tiara.png" alt="Tiara" width={100} height={100} data-ai-hint="tiara crown" className="drop-shadow-lg"/>
-            <p className="font-headline text-2xl sm:text-3xl text-primary mt-2 tracking-widest">Mis XV Años</p>
+            <p className="font-headline text-3xl sm:text-4xl text-primary mt-2 tracking-widest">Mis XV Años</p>
           </div>
 
           <div className="animate-in fade-in duration-1000 delay-400 mb-4 sm:mb-6">
-            <p className="font-delistan text-6xl sm:text-8xl text-primary">Valentina Fletes</p>
+            <p className="font-delistan text-7xl sm:text-9xl text-primary">Valentina Fletes</p>
           </div>
           
           <MusicPlayer audioSrc={audioSrc} autoPlay={true} className="animate-in fade-in duration-1000 delay-500" />
 
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600">
-            <CardContent className="font-body text-base sm:text-lg text-foreground/80 space-y-1 pt-6">
+            <CardContent className="font-body text-lg sm:text-xl text-foreground/80 space-y-1 pt-6">
               <p>Con la bendición de Dios y el amor de</p>
               <p>mis padres, te espero con ilusión para</p>
               <p>compartir este día tan soñado.</p>
-              <p className="font-headline text-base sm:text-lg text-primary mt-2 tracking-widest">Mis XV Años</p>
+              <p className="font-headline text-lg sm:text-xl text-primary mt-2 tracking-widest">Mis XV Años</p>
             </CardContent>
           </Card>
 
@@ -199,7 +199,7 @@ export default function HomePage() {
               title="Código de Vestimenta"
               titleClassName="text-primary"
             >
-              <div><p className="text-sm sm:text-base text-foreground/90">Formal</p></div>
+              <div><p className="text-base sm:text-lg text-foreground/90">Formal</p></div>
 
                <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
             </SectionCard>
@@ -253,7 +253,7 @@ export default function HomePage() {
                     className="shrink-0"
                     data-ai-hint="whatsapp logo"
                   />
-                <p className="text-center mt-2 font-headline text-lg text-primary tracking-widest mt-3 pt-3 sm:pt-3">
+                <p className="text-center mt-2 font-headline text-xl text-primary tracking-widest mt-3 pt-3 sm:pt-3">
                   Confirmar Asistencia
                 </p>
                 <Input
@@ -267,12 +267,12 @@ export default function HomePage() {
                 <RsvpButton
                   phoneNumber="84642286" 
                   message={confirmationMessage}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full"
                   disabled={!guestName.trim()}
                 />
               </div>
               <div className="animate-in fade-in duration-1000 delay-[400ms] mt-12 pt-11 sm:pt-15">
-                <p className="font-body text-base sm:text-lg text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
+                <p className="font-body text-lg sm:text-xl text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
               </div>
             </div>
         </div>

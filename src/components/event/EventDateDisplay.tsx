@@ -24,7 +24,7 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
     <div className={cn("flex flex-col items-center text-center w-full max-w-xs mx-auto text-gray-700", className)}>
       
       {/* MONTH */}
-      <p className="uppercase tracking-widest text-sm sm:text-base font-body mb-2">
+      <p className="uppercase tracking-widest text-base sm:text-lg font-body mb-2">
         {monthName}
       </p>
 
@@ -33,13 +33,13 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
         {/* LEFT - DAY NAME with LINES */}
         <div className="flex-1 flex flex-col items-center">
           <div className="w-full border-t border-gray-400 mb-1"></div>
-          <p className="uppercase text-xs sm:text-sm font-body">{dayName}</p>
+          <p className="uppercase text-sm sm:text-base font-body">{dayName}</p>
           <div className="w-full border-t border-gray-400 mt-1"></div>
         </div>
 
         {/* CENTER - DATE NUMBER */}
         <div className="px-4">
-          <p className="text-5xl sm:text-6xl font-headline text-gray-800">
+          <p className="text-6xl sm:text-7xl font-headline text-gray-800">
             {dayNumber}
           </p>
         </div>
@@ -47,13 +47,13 @@ const EventDateDisplay: FC<EventDateDisplayProps> = ({
         {/* RIGHT - YEAR with LINES */}
         <div className="flex-1 flex flex-col items-center">
           <div className="w-full border-t border-gray-400 mb-1"></div>
-          <p className="text-xs sm:text-sm font-body">{year}</p>
+          <p className="text-sm sm:text-base font-body">{year}</p>
           <div className="w-full border-t border-gray-400 mt-1"></div>
         </div>
       </div>
 
       {/* TIME */}
-      <p className="uppercase tracking-wide text-xs sm:text-sm font-body mt-3">
+      <p className="uppercase tracking-wide text-sm sm:text-base font-body mt-3">
         {time}
       </p>
     </div>

@@ -47,8 +47,8 @@ const ActivityTimelineItem: React.FC<ActivityTimelineItemProps> = ({ time, title
       align === 'left' ? 'items-end text-right' : 'items-start text-left'
     )}>
       <div className="text-primary mb-1 sm:mb-2">{icon}</div>
-      <h4 className="font-headline text-[0.8rem] sm:text-xs md:text-sm text-primary font-semibold uppercase leading-tight">{title}</h4>
-      <p className="font-body text-[0.7rem] sm:text-[0.75rem] text-foreground/80 leading-tight">{time}</p>
+      <h4 className="font-headline text-sm sm:text-base text-primary font-semibold uppercase leading-tight">{title}</h4>
+      <p className="font-body text-xs sm:text-sm text-foreground/80 leading-tight">{time}</p>
     </div>
   );
 
