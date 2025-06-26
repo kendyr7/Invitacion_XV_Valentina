@@ -244,7 +244,6 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <p className="flex items-center justify-center gap-2">
-                <Mail className="h-5 w-5" />
                 <span>Agradecemos sus muestras de cariño en sobre</span>
               </p>
             </SectionCard>
@@ -260,8 +259,8 @@ export default function HomePage() {
           className="w-full h-auto"
           data-ai-hint="floral decoration"
           />
-            <div className="absolute inset-0 flex flex-col items-center p-4 pt-8 sm:pt-10">
-              <div className="mt-3 flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
+            <div className="absolute inset-0 flex flex-col items-center p-4 pt-6 sm:pt-8">
+              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
                 <Image
                     src="/whatsapp-50.png" 
                     alt="WhatsApp Icon"
@@ -291,7 +290,7 @@ export default function HomePage() {
                   <ExternalLink className="ml-2 h-5 w-5" />
                 </Button>
               </div>
-              <div className="animate-in fade-in duration-1000 delay-[400ms] mt-12 pt-11 sm:pt-15">
+              <div className="animate-in fade-in duration-1000 delay-[400ms] mt-8">
                 <p className="font-body text-lg sm:text-xl text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
               </div>
             </div>
