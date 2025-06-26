@@ -250,50 +250,44 @@ export default function HomePage() {
           </div>
         </div>
         
-        <div className="relative w-full">
-          <Image
-          src="/flowers_deco/flowers_deco.png"
-          alt="Decoración floral en la parte inferior"
-          width={600}
-          height={150} 
-          className="w-full h-auto"
-          data-ai-hint="floral decoration"
-          />
-            <div className="absolute inset-0 flex flex-col items-center p-4 pt-6 sm:pt-8">
-              <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
-                <Image
-                    src="/whatsapp-50.png" 
-                    alt="WhatsApp Icon"
-                    width={50}
-                    height={50}
-                    className="shrink-0"
-                    data-ai-hint="whatsapp logo"
-                  />
-                <p className="text-center mt-2 font-headline text-xl text-primary tracking-widest mt-3 pt-3 sm:pt-3">
-                  Confirmar Asistencia
-                </p>
-                <Input
-                  type="text"
-                  placeholder="Nombre y Apellido"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  className="mt-4 mb-3 bg-white/80 border-primary text-center w-full max-w-[280px] placeholder:text-foreground/50"
-                  aria-label="Tu nombre y apellido"
+        <div 
+          className="relative w-full bg-[url('/flowers_deco/flowers_deco.png')] bg-contain bg-no-repeat bg-bottom"
+        >
+          <div className="flex flex-col items-center pt-10 pb-24 px-4">
+            <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
+              <Image
+                  src="/whatsapp-50.png" 
+                  alt="WhatsApp Icon"
+                  width={50}
+                  height={50}
+                  className="shrink-0"
+                  data-ai-hint="whatsapp logo"
                 />
-                <Button
-                  onClick={handleConfirm}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
-                  disabled={!guestName.trim()}
-                  aria-label="Confirmar asistencia vía WhatsApp"
-                >
-                  Confirmar aquí
-                  <ExternalLink className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-              <div className="animate-in fade-in duration-1000 delay-[400ms] mt-8">
-                <p className="font-body text-lg sm:text-xl text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
-              </div>
+              <p className="text-center mt-2 font-headline text-xl text-primary tracking-widest mt-3 pt-3 sm:pt-3">
+                Confirmar Asistencia
+              </p>
+              <Input
+                type="text"
+                placeholder="Nombre y Apellido"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                className="mt-4 mb-3 bg-white/80 border-primary text-center w-full max-w-[280px] placeholder:text-foreground/50"
+                aria-label="Tu nombre y apellido"
+              />
+              <Button
+                onClick={handleConfirm}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
+                disabled={!guestName.trim()}
+                aria-label="Confirmar asistencia vía WhatsApp"
+              >
+                Confirmar aquí
+                <ExternalLink className="ml-2 h-5 w-5" />
+              </Button>
             </div>
+            <div className="animate-in fade-in duration-1000 delay-[400ms] mt-8">
+              <p className="font-body text-lg sm:text-xl text-foreground/80 text-center">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
