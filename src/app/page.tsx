@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -37,12 +38,13 @@ export default function HomePage() {
   const iconSizeTimeline = 28; 
 
   const timelineEventsNew = [
-    { time: "7:00 PM", title: "Bienvenida & brindis", icon: <Martini size={iconSizeTimeline} className="text-primary"/> },
-    { time: "7:30 PM", title: "Vals & baile dedicatorio", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
-    { time: "8:00 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} className="text-primary"/> },
-    { time: "9:00 PM", title: "Bocadillos & Photoboth", icon: <Camera size={iconSizeTimeline} className="text-primary"/> },
-    { time: "10:00 PM", title: "Fiesta con DJ", icon: <Disc3 size={iconSizeTimeline} className="text-primary"/> }, 
-    { time: "12:00 AM", title: "Cake", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
+    { time: "7:00 PM", title: "Bienvenida", icon: <Martini size={iconSizeTimeline} className="text-primary"/> },
+    { time: "7:30 PM", title: "Baile con papá", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "7:35 PM", title: "Brindis", icon: <Wine size={iconSizeTimeline} className="text-primary"/> },
+    { time: "8:30 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} className="text-primary"/> },
+    { time: "9:30 PM", title: "Inicia Fiesta", icon: <Disc3 size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "11:00 PM", title: "Hora Loca", icon: <PartyPopper size={iconSizeTimeline} className="text-primary"/> },
+    { time: "12:00 AM", title: "Pastel", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
 
@@ -267,7 +269,7 @@ export default function HomePage() {
                 <RsvpButton
                   phoneNumber="84642286" 
                   message={confirmationMessage}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
                   disabled={!guestName.trim()}
                 />
               </div>
@@ -280,3 +282,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+    
