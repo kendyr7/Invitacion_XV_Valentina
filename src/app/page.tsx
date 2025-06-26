@@ -34,12 +34,17 @@ import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
 
 export default function HomePage() {
+  const [isOpened, setIsOpened] = useState(false);
   const [guestName, setGuestName] = useState('');
   const { toast } = useToast();
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00";
   
   const { addAttendee } = useAttendees();
+
+  const handleOpenEnvelope = () => {
+    setIsOpened(true);
+  };
 
   const handleConfirm = () => {
     if (!guestName.trim()) {
@@ -73,14 +78,37 @@ export default function HomePage() {
     { time: "12:00 PM", title: "Pastel", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
+  
+  if (!isOpened) {
+    return (
+      <main 
+        className="flex min-h-screen flex-col items-center justify-center bg-background p-4 cursor-pointer" 
+        onClick={handleOpenEnvelope}
+      >
+        <div className="text-center animate-in fade-in duration-1000">
+          <Image 
+            src="/envelope.png"
+            alt="An envelope, click to open invitation"
+            width={400}
+            height={300}
+            className="mx-auto"
+            data-ai-hint="envelope mail"
+            priority
+          />
+          <p className="mt-4 text-lg text-foreground/80 font-headline">Haz clic para abrir la invitación</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground relative overflow-auto sm:overflow-hidden">
       <Image 
-        src="/"
+        src="/flowers_deco/elegant-floral-background.jpeg"
         fill
         alt="Elegant event background" 
-        className="absolute inset-0 z-[-1] opacity-20 filter blur-sm object-cover" 
+        className="absolute inset-0 z-[-1] opacity-20 filter blur-sm object-cover"
+        style={{ objectFit: 'cover' }}
         priority
         data-ai-hint="elegant floral"
       />
@@ -117,7 +145,7 @@ export default function HomePage() {
             <p className="font-delistan text-7xl sm:text-9xl text-primary">Valentina Fletes</p>
           </div>
           
-          <MusicPlayer audioSrc={audioSrc} autoPlay={true} className="animate-in fade-in duration-1000 delay-500" />
+          <MusicPlayer audioSrc={audioSrc} autoPlay={isOpened} className="animate-in fade-in duration-1000 delay-500" />
 
           <Card className="bg-transparent border-none shadow-none w-full animate-in fade-in duration-1000 delay-600">
             <CardContent className="font-body text-lg sm:text-xl text-foreground/80 space-y-1 pt-6">
