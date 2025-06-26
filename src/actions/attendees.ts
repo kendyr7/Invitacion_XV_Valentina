@@ -40,7 +40,7 @@ export async function addAttendee(name: string) {
   const newAttendee: Attendee = {
     id: db.nextId++,
     name,
-    confirmedAt: format(new Date(), 'yyyy-MM-dd h:mm a'),
+    confirmedAt: format(new Date(), 'dd/MM/yyyy HH:mm'),
   };
   
   db.attendees.push(newAttendee);
