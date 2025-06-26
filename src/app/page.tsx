@@ -29,9 +29,9 @@ import {
   Bus,
   Mail,
 } from 'lucide-react';
-import { useAttendees } from '@/context/AttendeesContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
+import { addAttendee } from '@/actions/attendees';
 
 export default function HomePage() {
   const [isOpened, setIsOpened] = useState(false);
@@ -40,13 +40,11 @@ export default function HomePage() {
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00";
   
-  const { addAttendee } = useAttendees();
-
   const handleOpenEnvelope = () => {
     setIsOpened(true);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (!guestName.trim()) {
        toast({
         title: "Campo requerido",
@@ -56,7 +54,7 @@ export default function HomePage() {
       return;
     }
 
-    addAttendee(guestName.trim());
+    await addAttendee(guestName.trim());
     
     toast({
         title: "¡Confirmación enviada!",
@@ -255,9 +253,9 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <div className="flex justify-center space-x-3 mt-2">
-                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
-                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
-                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
+                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
+                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md" data-ai-hint="color swatch" />
               </div> <br />
               <p className="text-foreground/70 mt-3 px-4">
                 Con cariño, te pedimos considerar estos tonos como reservados para la quinceañera y su corte, permitiéndoles brillar en este día especial.
@@ -273,6 +271,7 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <p className="flex items-center justify-center gap-2">
+                <Mail size={20} className="inline-block" />
                 <span>Agradecemos sus muestras de cariño en sobre</span>
               </p>
             </SectionCard>
@@ -300,8 +299,8 @@ export default function HomePage() {
                 Confirmar Asistencia
               </Button>
             </div>
-            <div className="animate-in fade-in duration-1000 delay-[400ms] mt-8">
-              <p className="font-body text-lg sm:text-xl text-foreground/80 text-center">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
+            <div className="animate-in fade-in duration-1000 delay-[400ms] mt-4">
+              <p className="font-body text-lg sm:text-xl text-foreground/80 text-center px-4">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
             </div>
           </div>
         </div>

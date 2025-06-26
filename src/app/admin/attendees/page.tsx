@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Table,
   TableBody,
@@ -10,11 +8,11 @@ import {
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Trash2 } from 'lucide-react';
-import { useAttendees } from '@/context/AttendeesContext';
 import { Button } from '@/components/ui/button';
+import { getAttendees, removeAttendee } from "@/actions/attendees";
 
-export default function AttendeesPage() {
-  const { attendees, removeAttendee } = useAttendees();
+export default async function AttendeesPage() {
+  const attendees = await getAttendees();
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-background p-4 pt-0 sm:p-8">
@@ -41,10 +39,13 @@ export default function AttendeesPage() {
                     <TableCell className="font-medium">{attendee.name}</TableCell>
                     <TableCell>{attendee.confirmedAt}</TableCell>
                     <TableCell className="text-right">
-                       <Button variant="ghost" size="icon" onClick={() => removeAttendee(attendee.id)}>
-                         <Trash2 className="h-4 w-4 text-destructive" />
-                         <span className="sr-only">Eliminar</span>
-                       </Button>
+                       <form action={removeAttendee}>
+                         <input type="hidden" name="attendeeId" value={attendee.id} />
+                         <Button variant="ghost" size="icon" type="submit">
+                           <Trash2 className="h-4 w-4 text-destructive" />
+                           <span className="sr-only">Eliminar</span>
+                         </Button>
+                       </form>
                     </TableCell>
                   </TableRow>
                 ))}
