@@ -298,6 +298,9 @@ export default function HomePage() {
               >
                 Confirmar Asistencia
               </Button>
+              <p className="text-sm text-foreground/80 mt-2 text-center">
+                Por favor, confirma antes del 15 de Julio.
+              </p>
             </div>
             <div className="animate-in fade-in duration-1000 delay-[400ms] mt-4">
               <p className="font-body text-lg sm:text-xl text-foreground/80 text-center px-4">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
