@@ -39,7 +39,7 @@ export default function HomePage() {
 
   const timelineEventsNew = [
     { time: "7:00 PM", title: "Bienvenida", icon: <Martini size={iconSizeTimeline} className="text-primary"/> },
-    { time: "7:30 PM", title: "Baile con papá", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "7:30 PM", title: "Vals & Baile dedicatorio", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
     { time: "7:35 PM", title: "Brindis", icon: <Wine size={iconSizeTimeline} className="text-primary"/> },
     { time: "8:30 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} className="text-primary"/> },
     { time: "9:30 PM", title: "Inicia Fiesta", icon: <Disc3 size={iconSizeTimeline} className="text-primary"/> }, 

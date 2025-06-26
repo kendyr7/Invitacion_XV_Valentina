@@ -54,7 +54,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   if (!isClient) {
     // Render placeholder or skeleton on server/initial client render
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500">
+      <div className="grid grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="p-4 rounded-lg">
             <div className="text-3xl sm:text-4xl font-bold text-primary animate-pulse">--</div>
@@ -73,7 +73,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500 w-full max-w-md">
+    <div className="grid grid-cols-4 gap-4 text-center animate-in fade-in duration-1000 delay-500 w-full max-w-md">
       {timerComponents.map((component, index) => (
         component.value !== undefined && (
           <div key={index} className="p-3 sm:p-4 rounded-lg transform transition-all hover:scale-120">
