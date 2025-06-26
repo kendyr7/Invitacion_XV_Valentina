@@ -228,7 +228,7 @@ export default function HomePage() {
 
           <div className="w-full animate-in fade-in duration-1000 delay-[1500ms]">
             <SectionCard 
-              title="Sugerencia de Regalos" 
+              title="Regalos" 
               icon={<Gift size={28} className="text-primary"/>}
               titleClassName="text-primary"
             >
