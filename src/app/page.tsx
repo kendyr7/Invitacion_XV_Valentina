@@ -289,6 +289,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="w-full text-center py-4 bg-background/80 dark:bg-neutral-900/80 text-foreground/60 text-xs bg-[url('/paper-texture.jpg')] bg-cover bg-center backdrop-blur-md">
+          <p>Creado por Kendyr Quintanilla </p>
+        </footer>
+
       </div>
     </main>
   );
