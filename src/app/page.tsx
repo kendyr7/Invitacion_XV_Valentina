@@ -39,12 +39,12 @@ export default function HomePage() {
 
   const timelineEventsNew = [
     { time: "7:00 PM", title: "Bienvenida", icon: <Martini size={iconSizeTimeline} className="text-primary"/> },
-    { time: "7:30 PM", title: "Vals & Baile dedicatorio", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
+    { time: "7:30 PM", title: "Baile con papa", icon: <Gem size={iconSizeTimeline} className="text-primary"/> }, 
     { time: "7:35 PM", title: "Brindis", icon: <Wine size={iconSizeTimeline} className="text-primary"/> },
     { time: "8:30 PM", title: "Cena", icon: <Utensils size={iconSizeTimeline} className="text-primary"/> },
     { time: "9:30 PM", title: "Inicia Fiesta", icon: <Disc3 size={iconSizeTimeline} className="text-primary"/> }, 
     { time: "11:00 PM", title: "Hora Loca", icon: <PartyPopper size={iconSizeTimeline} className="text-primary"/> },
-    { time: "12:00 AM", title: "Pastel", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
+    { time: "12:00 PM", title: "Pastel", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
 
@@ -203,7 +203,7 @@ export default function HomePage() {
             >
               <div><p className="text-base sm:text-lg text-foreground/90">Formal</p></div>
 
-               <Image src="/dress-code.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
+               <Image src="/dress-code-fix.png" alt="Código de Vestimenta Formal" width={300} height={300} className="mx-auto mt-3 mb-3" data-ai-hint="formal attire" />
             </SectionCard>
           </div>
 
@@ -231,7 +231,7 @@ export default function HomePage() {
               icon={<Gift size={28} className="text-primary"/>}
               titleClassName="text-primary"
             >
-              <p>Tu presencia es nuestro mayor regalo. Si además deseas obsequiarnos algo, Valentina agradecería contribuciones monetarias para sus futuros proyectos y estudios. Habrá un buzón disponible durante el evento.</p>
+              <p>Agradecemos sus muestras de cariño en sobre</p>
             </SectionCard>
           </div>
         </div>
@@ -282,5 +282,4 @@ export default function HomePage() {
     </main>
   );
 }
-
     
