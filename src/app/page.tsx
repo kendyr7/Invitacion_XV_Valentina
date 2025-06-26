@@ -28,28 +28,37 @@ import {
   Wine,
   Bus,
   Mail,
-  ExternalLink
 } from 'lucide-react';
 import { useAttendees } from '@/context/AttendeesContext';
 import { Button } from '@/components/ui/button';
+import { useToast } from "@/hooks/use-toast";
 
 export default function HomePage() {
   const [guestName, setGuestName] = useState('');
+  const { toast } = useToast();
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00";
   
   const { addAttendee } = useAttendees();
-  const phoneNumber = "84642286";
 
   const handleConfirm = () => {
-    if (!guestName.trim()) return;
+    if (!guestName.trim()) {
+       toast({
+        title: "Campo requerido",
+        description: "Por favor, ingresa tu nombre y apellido para confirmar.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     addAttendee(guestName.trim());
     
-    const confirmationMessage = `¡Hola! Soy ${guestName.trim()}. Me encantaría confirmar mi asistencia al XV años de Valentina.`;
-    const encodedMessage = encodeURIComponent(confirmationMessage);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    toast({
+        title: "¡Confirmación enviada!",
+        description: "Tu asistencia ha sido registrada correctamente. ¡Muchas gracias!",
+    });
+
+    setGuestName('');
   };
 
   const iconSizeTimeline = 28; 
@@ -277,11 +286,9 @@ export default function HomePage() {
               <Button
                 onClick={handleConfirm}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
-                disabled={!guestName.trim()}
-                aria-label="Confirmar asistencia vía WhatsApp"
+                aria-label="Confirmar asistencia"
               >
-                Confirmar aquí
-                <ExternalLink className="ml-2 h-5 w-5" />
+                Confirmar Asistencia
               </Button>
             </div>
             <div className="animate-in fade-in duration-1000 delay-[400ms] mt-8">
