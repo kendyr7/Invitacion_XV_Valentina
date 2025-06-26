@@ -74,21 +74,13 @@ export default function HomePage() {
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
 
-  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    const img = e.target as HTMLImageElement;
-    img.style.width = '200px';
-    img.style.height = '200px';
-  };
-
-
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground relative overflow-auto sm:overflow-hidden">
       <Image 
         src="/"
         fill
-        objectFit="cover" 
         alt="Elegant event background" 
-        className="absolute inset-0 z-[-1] opacity-20 filter blur-sm" 
+        className="absolute inset-0 z-[-1] opacity-20 filter blur-sm object-cover" 
         priority
         data-ai-hint="elegant floral"
       />
@@ -235,9 +227,9 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <div className="flex justify-center space-x-3 mt-2">
-                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
-                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
-                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md cursor-pointer transition-all duration-300 ease-in-out" data-ai-hint="color swatch" onClick={handleImageClick} />
+                <Image src="/colors/color1.jpeg" alt="Color Reservado 1" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
+                <Image src="/colors/color2.jpeg" alt="Color Reservado 2" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
+                <Image src="/colors/color3.jpeg" alt="Color Reservado 3" width={50} height={50} className="rounded-md shadow-md transition-all duration-300 ease-in-out" data-ai-hint="color swatch" />
               </div> <br />
               <p className="text-foreground/70 mt-3 px-4">
                 Con cariño, te pedimos considerar estos tonos como reservados para la quinceañera y su corte, permitiéndoles brillar en este día especial.
@@ -264,17 +256,6 @@ export default function HomePage() {
         >
           <div className="flex flex-col items-center pt-10 pb-24 px-4">
             <div className="flex flex-col items-center animate-in fade-in duration-1000 delay-[200ms] w-full max-w-xs">
-              <Image
-                  src="/whatsapp-50.png" 
-                  alt="WhatsApp Icon"
-                  width={50}
-                  height={50}
-                  className="shrink-0"
-                  data-ai-hint="whatsapp logo"
-                />
-              <p className="text-center mt-2 font-headline text-xl text-primary tracking-widest mt-3 pt-3 sm:pt-3">
-                Confirmar Asistencia
-              </p>
               <Input
                 type="text"
                 placeholder="Nombre y Apellido"

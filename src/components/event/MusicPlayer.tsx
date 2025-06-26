@@ -36,7 +36,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className, autoPlay
       setIsPlaying(false);
     } else {
       try {
-        console.log('Attempting to play. Current src:', audioRef.current.src, 'Ready state:', audioRef.current.readyState);
         if (audioRef.current.readyState === 0) { // HAVE_NOTHING
             console.warn("Audio source not ready (readyState is 0). Attempting to load...");
             audioRef.current.load(); // Try to load it again
@@ -75,7 +74,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className, autoPlay
         if (audioRef.current) {
           setDuration(audioRef.current.duration);
           setCurrentTime(audioRef.current.currentTime);
-          console.log('Audio metadata loaded. Duration:', audioRef.current.duration, 'ReadyState:', audioRef.current.readyState);
         }
       };
 
@@ -146,7 +144,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className, autoPlay
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
-  const handleShuffle = () => console.log("Shuffle clicked (not implemented)");
+  const handleShuffle = () => {};
   const handleSkipBack = () => {
     if (audioRef.current) audioRef.current.currentTime = 0;
   };
@@ -158,7 +156,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, className, autoPlay
   const handleRepeat = () => {
     if(audioRef.current) {
         audioRef.current.loop = !audioRef.current.loop;
-        console.log("Repeat toggled:", audioRef.current.loop);
         // You might want to update UI to reflect loop state
     }
   };
