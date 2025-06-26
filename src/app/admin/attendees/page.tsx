@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Table,
   TableBody,
@@ -7,20 +9,15 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users } from 'lucide-react';
-
-// Mock data for attendees. In a real application, this would come from a database.
-const attendees = [
-  { id: 1, name: "Juan Pérez", confirmedAt: "2024-07-20 10:00 AM" },
-  { id: 2, name: "Maria Garcia", confirmedAt: "2024-07-20 11:30 AM" },
-  { id: 3, name: "Carlos Rodriguez", confirmedAt: "2024-07-21 09:15 AM" },
-  { id: 4, name: "Ana Martinez", confirmedAt: "2024-07-21 02:45 PM" },
-  { id: 5, name: "Luis Hernandez", confirmedAt: "2024-07-22 08:00 AM" },
-];
+import { Users, Trash2 } from 'lucide-react';
+import { useAttendees } from '@/context/AttendeesContext';
+import { Button } from '@/components/ui/button';
 
 export default function AttendeesPage() {
+  const { attendees, removeAttendee } = useAttendees();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8">
+    <main className="flex min-h-screen flex-col items-center bg-background p-4 pt-0 sm:p-8">
       <Card className="w-full max-w-4xl shadow-2xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-2xl sm:text-3xl text-primary">
@@ -33,17 +30,22 @@ export default function AttendeesPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[100px]">ID</TableHead>
                   <TableHead>Nombre del Invitado</TableHead>
                   <TableHead>Fecha de Confirmación</TableHead>
+                  <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {attendees.map((attendee) => (
                   <TableRow key={attendee.id}>
-                    <TableCell className="font-medium">{attendee.id}</TableCell>
-                    <TableCell>{attendee.name}</TableCell>
+                    <TableCell className="font-medium">{attendee.name}</TableCell>
                     <TableCell>{attendee.confirmedAt}</TableCell>
+                    <TableCell className="text-right">
+                       <Button variant="ghost" size="icon" onClick={() => removeAttendee(attendee.id)}>
+                         <Trash2 className="h-4 w-4 text-destructive" />
+                         <span className="sr-only">Eliminar</span>
+                       </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

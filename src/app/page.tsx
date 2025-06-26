@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import MusicPlayer from '@/components/event/MusicPlayer';
 import CountdownTimer from '@/components/event/CountdownTimer';
-import RsvpButton from '@/components/event/RsvpButton';
 import { Card, CardContent } from '@/components/ui/card';
 import SectionCard from '@/components/event/SectionCard';
 import ActivityTimelineItem from '@/components/event/ActivityTimelineItem';
@@ -28,13 +27,30 @@ import {
   Brush,
   Wine,
   Bus,
-  Mail
+  Mail,
+  ExternalLink
 } from 'lucide-react';
+import { useAttendees } from '@/context/AttendeesContext';
+import { Button } from '@/components/ui/button';
 
 export default function HomePage() {
   const [guestName, setGuestName] = useState('');
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
-  const eventTargetDate = "2025-08-01T19:00:00"; 
+  const eventTargetDate = "2025-08-01T19:00:00";
+  
+  const { addAttendee } = useAttendees();
+  const phoneNumber = "84642286";
+
+  const handleConfirm = () => {
+    if (!guestName.trim()) return;
+
+    addAttendee(guestName.trim());
+    
+    const confirmationMessage = `¡Hola! Soy ${guestName.trim()}. Me encantaría confirmar mi asistencia al XV años de Valentina.`;
+    const encodedMessage = encodeURIComponent(confirmationMessage);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
 
   const iconSizeTimeline = 28; 
 
@@ -48,11 +64,6 @@ export default function HomePage() {
     { time: "12:00 PM", title: "Pastel", icon: <CakeSlice size={iconSizeTimeline} className="text-primary"/> },
     { time: "1:00 AM", title: "Despedida", icon: <Car size={iconSizeTimeline} className="text-primary"/> },
   ];
-
-  const baseMessage = "¡Hola! Me encantaría confirmar mi asistencia al XV años de Valentina.";
-  const confirmationMessage = guestName 
-    ? `¡Hola! Soy ${guestName.trim()}. Me encantaría confirmar mi asistencia al XV años de Valentina.` 
-    : baseMessage;
 
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
     const img = e.target as HTMLImageElement;
@@ -270,12 +281,15 @@ export default function HomePage() {
                   className="mt-4 mb-3 bg-white/80 border-primary text-center w-full max-w-[280px] placeholder:text-foreground/50"
                   aria-label="Tu nombre y apellido"
                 />
-                <RsvpButton
-                  phoneNumber="84642286" 
-                  message={confirmationMessage}
+                <Button
+                  onClick={handleConfirm}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
                   disabled={!guestName.trim()}
-                />
+                  aria-label="Confirmar asistencia vía WhatsApp"
+                >
+                  Confirmar aquí
+                  <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
               </div>
               <div className="animate-in fade-in duration-1000 delay-[400ms] mt-12 pt-11 sm:pt-15">
                 <p className="font-body text-lg sm:text-xl text-foreground/80">¡Gracias por acompañarme <br/> en este día tan especial! <br/> ❤️</p>
@@ -286,6 +300,3 @@ export default function HomePage() {
     </main>
   );
 }
-    
-
-    
