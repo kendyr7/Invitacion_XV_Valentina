@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (email: string, pass: string) => boolean;
+  login: (user: string, pass: string) => boolean;
   logout: () => void;
 }
 
@@ -23,8 +23,13 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
   }, []);
 
 
-  const login = (email: string, pass: string): boolean => {
-    if (email === 'kendyr7@gmail.com' && pass === '123') {
+  const login = (user: string, pass: string): boolean => {
+    const validCredentials: Record<string, string> = {
+      'kendyr7@gmail.com': '123',
+      'marthafletes': 'nic2025',
+    };
+
+    if (validCredentials[user] === pass) {
       setIsAuthenticated(true);
       sessionStorage.setItem('isAuthenticated', 'true');
       return true;

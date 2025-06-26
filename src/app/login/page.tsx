@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
   const { login } = useAuth();
@@ -18,7 +18,7 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const success = login(email, password);
+    const success = login(user, password);
     if (success) {
       router.push('/admin/attendees');
     } else {
@@ -40,14 +40,14 @@ export default function LoginPage() {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="user">Usuario / Email</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
+                id="user"
+                type="text"
+                placeholder="usuario o email"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
               />
             </div>
             <div className="space-y-2">
