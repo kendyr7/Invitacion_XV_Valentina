@@ -27,7 +27,8 @@ import {
   Palette,
   Brush,
   Wine,
-  Bus
+  Bus,
+  Mail
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -231,7 +232,10 @@ export default function HomePage() {
               icon={<Gift size={28} className="text-primary"/>}
               titleClassName="text-primary"
             >
-              <p>Agradecemos sus muestras de cariño en sobre</p>
+              <p className="flex items-center justify-center gap-2">
+                <Mail className="h-5 w-5" />
+                <span>Agradecemos sus muestras de cariño en sobre</span>
+              </p>
             </SectionCard>
           </div>
         </div>
@@ -282,4 +286,6 @@ export default function HomePage() {
     </main>
   );
 }
+    
+
     
