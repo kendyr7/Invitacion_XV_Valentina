@@ -9,13 +9,27 @@ export interface Attendee {
   confirmedAt: string;
 }
 
-// NOTE: This is an in-memory store. Data will be lost when the server restarts.
-// In a real production application, you would replace this with a database like Firestore or Prisma.
-let attendees: Attendee[] = [];
-let nextId = 1;
+// HACK: This is a workaround to persist data in-memory across hot reloads in dev.
+// In a real app, you would use a database like Firestore.
+type AppDb = {
+  attendees: Attendee[];
+  nextId: number;
+};
+
+const getDb = (): AppDb => {
+  const globalWithDb = globalThis as unknown as { __db: AppDb | undefined };
+  if (!globalWithDb.__db) {
+    globalWithDb.__db = { attendees: [], nextId: 1 };
+  }
+  return globalWithDb.__db;
+};
+
+const db = getDb();
+
 
 export async function getAttendees(): Promise<Attendee[]> {
-  return Promise.resolve(attendees);
+  // Return a copy to prevent direct mutation of the "database"
+  return Promise.resolve([...db.attendees]);
 }
 
 export async function addAttendee(name: string) {
@@ -24,12 +38,12 @@ export async function addAttendee(name: string) {
   }
   
   const newAttendee: Attendee = {
-    id: nextId++,
+    id: db.nextId++,
     name,
     confirmedAt: format(new Date(), 'yyyy-MM-dd h:mm a'),
   };
   
-  attendees.push(newAttendee);
+  db.attendees.push(newAttendee);
   
   revalidatePath('/admin/attendees');
   
@@ -43,7 +57,7 @@ export async function removeAttendee(formData: FormData) {
     return { success: false, message: 'Invalid attendee ID' };
   }
 
-  attendees = attendees.filter((attendee) => attendee.id !== attendeeId);
+  db.attendees = db.attendees.filter((attendee) => attendee.id !== attendeeId);
   
   revalidatePath('/admin/attendees');
   
