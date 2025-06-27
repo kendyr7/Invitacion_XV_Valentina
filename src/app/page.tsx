@@ -40,7 +40,7 @@ export default function HomePage() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { toast } = useToast();
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
-  const eventTargetDate = "2025-08-01T19:00:00";
+  const eventTargetDate = "2025-08-01T19:00:00-06:00";
 
   useEffect(() => {
     if (!isOpened) return;
@@ -133,7 +133,6 @@ export default function HomePage() {
         fill
         alt="Elegant event background" 
         className="absolute inset-0 z-[-1] opacity-20 filter blur-sm object-cover"
-        style={{ objectFit: 'cover' }}
         priority
         data-ai-hint="elegant floral"
       />
