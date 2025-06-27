@@ -1,5 +1,17 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore, type Firestore } from "firebase/firestore";
+import dotenv from 'dotenv';
+import path from 'path';
+
+// This will attempt to load environment variables from .env.local
+// This is especially useful for ensuring server-side actions have the correct environment
+if (typeof window === 'undefined') { // Only run on server
+  try {
+    dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+  } catch(e) {
+    // It's okay if this fails, Next.js might have already loaded it.
+  }
+}
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -25,7 +37,8 @@ if (firebaseConfig.projectId) {
     );
   }
 } else {
-  console.error("Firebase project ID not found. Skipping Firebase initialization.");
+  // This message is more explicit about the cause
+  console.error("Firebase project ID not found in environment variables. Please check your .env.local file and restart the server.");
 }
 
 export { db };
