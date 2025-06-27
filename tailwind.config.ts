@@ -11,9 +11,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Crimson Text', 'serif'],
-        headline: ['Crimson Text', 'serif'],
-        'fleur-de-leah': ['Fleur De Leah', 'cursive'],
+        body: ['var(--font-crimson-text)', 'serif'],
+        headline: ['var(--font-crimson-text)', 'serif'],
+        'fleur-de-leah': ['var(--font-fleur-de-leah)', 'cursive'],
         delistan: ['Delistan', 'cursive'],
         code: ['monospace'],
       },

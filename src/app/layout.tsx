@@ -1,9 +1,24 @@
 
 import type { Metadata } from 'next';
+import { Crimson_Text, Fleur_De_Leah } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { AppProviders } from '@/components/AppProviders';
+import { cn } from '@/lib/utils';
+
+const crimsonText = Crimson_Text({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-crimson-text',
+});
+
+const fleurDeLeah = Fleur_De_Leah({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-fleur-de-leah',
+});
 
 export const metadata: Metadata = {
   title: 'Invitacion XV Valentina',
@@ -20,16 +35,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fleur+De+Leah&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
+      <body 
+        className={cn(
+          "font-body antialiased",
+          crimsonText.variable,
+          fleurDeLeah.variable
+        )} 
+        suppressHydrationWarning
+      >
         <AppProviders>
           {children}
           <Toaster />
         </AppProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
