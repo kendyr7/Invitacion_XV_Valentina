@@ -1,33 +1,61 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { db } from '@/lib/firebase';
+import { 
+  collection, 
+  getDocs, 
+  addDoc, 
+  doc, 
+  updateDoc, 
+  serverTimestamp, 
+  Timestamp, 
+  query, 
+  orderBy,
+  getDoc
+} from 'firebase/firestore';
 
 export interface Attendee {
-  id: number;
+  id: string; // Firestore document ID
   name: string;
-  confirmedAt: string;
+  confirmedAt: string; // Formatted date string
   archived: boolean;
 }
 
-// HACK: This is a workaround to persist data in-memory across hot reloads in dev.
-// In a real app, you would use a database like Firestore.
-type AppDb = {
-  attendees: Attendee[];
-  nextId: number;
-};
-
-const getDb = (): AppDb => {
-  const globalWithDb = globalThis as unknown as { __db: AppDb | undefined };
-  if (!globalWithDb.__db) {
-    globalWithDb.__db = { attendees: [], nextId: 1 };
-  }
-  return globalWithDb.__db;
+const formatTimestamp = (timestamp: Timestamp): string => {
+  const date = timestamp.toDate();
+  const formatter = new Intl.DateTimeFormat('es-NI', {
+    timeZone: 'America/Managua',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+  // The output for 'es-NI' is like "01/08/2025, 19:00". The comma needs to be removed.
+  return formatter.format(date).replace(',', '');
 };
 
 export async function getAttendees(): Promise<Attendee[]> {
-  const db = getDb();
-  // Return a copy to prevent direct mutation of the "database"
-  return Promise.resolve([...db.attendees]);
+  try {
+    const attendeesCol = collection(db, 'attendees');
+    const q = query(attendeesCol, orderBy('confirmedAt', 'desc'));
+    const attendeeSnapshot = await getDocs(q);
+    const attendeeList = attendeeSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        name: data.name,
+        confirmedAt: data.confirmedAt ? formatTimestamp(data.confirmedAt as Timestamp) : 'Fecha no disponible',
+        archived: data.archived || false,
+      };
+    });
+    return attendeeList;
+  } catch (error) {
+    console.error("Error fetching attendees: ", error);
+    return [];
+  }
 }
 
 export async function addAttendee(name: string) {
@@ -35,68 +63,47 @@ export async function addAttendee(name: string) {
     return { success: false, message: 'Name cannot be empty' };
   }
 
-  const db = getDb();
-  
-  const now = new Date();
-  const formatter = new Intl.DateTimeFormat('es-NI', {
-      timeZone: 'America/Managua',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-  });
-  // The output for 'es-NI' is like "01/08/2025, 19:00". The comma needs to be removed.
-  const formattedNicaraguaTime = formatter.format(now).replace(',', '');
-  
-  const newAttendee: Attendee = {
-    id: db.nextId++,
-    name,
-    confirmedAt: formattedNicaraguaTime,
-    archived: false,
-  };
-  
-  // IMMUTABLE UPDATE: Replace the old array with a new one.
-  db.attendees = [...db.attendees, newAttendee];
-  
-  revalidatePath('/admin/attendees');
-  
-  return { success: true, attendee: newAttendee };
+  try {
+    const newAttendeeRef = await addDoc(collection(db, 'attendees'), {
+      name: name.trim(),
+      confirmedAt: serverTimestamp(),
+      archived: false,
+    });
+    
+    revalidatePath('/admin/attendees');
+    
+    return { success: true, attendeeId: newAttendeeRef.id };
+  } catch (error) {
+    console.error("Error adding attendee: ", error);
+    return { success: false, message: 'Could not add attendee to database.' };
+  }
 }
 
 export async function toggleArchiveAttendee(formData: FormData) {
-  const db = getDb();
-  const attendeeId = Number(formData.get('attendeeId'));
+  const attendeeId = formData.get('attendeeId') as string;
 
-  if (isNaN(attendeeId)) {
+  if (!attendeeId) {
     return { success: false, message: 'Invalid attendee ID' };
   }
 
-  const currentAttendees = db.attendees;
-  const attendeeIndex = currentAttendees.findIndex(a => a.id === attendeeId);
+  const attendeeRef = doc(db, 'attendees', attendeeId);
 
-  if (attendeeIndex === -1) {
-    return { success: false, message: 'Attendee not found' };
+  try {
+    const attendeeSnap = await getDoc(attendeeRef);
+    if (!attendeeSnap.exists()) {
+      return { success: false, message: 'Attendee not found' };
+    }
+    const currentArchivedState = attendeeSnap.data().archived;
+
+    await updateDoc(attendeeRef, {
+      archived: !currentArchivedState,
+    });
+    
+    revalidatePath('/admin/attendees');
+    
+    return { success: true };
+  } catch (error) {
+    console.error("Error toggling archive state: ", error);
+    return { success: false, message: 'Could not update attendee.' };
   }
-  
-  // Create a new, updated attendee object.
-  const updatedAttendee = {
-    ...currentAttendees[attendeeIndex],
-    archived: !currentAttendees[attendeeIndex].archived,
-  };
-
-  // Create a new array with the updated attendee using slice.
-  const newAttendees = [
-    ...currentAttendees.slice(0, attendeeIndex),
-    updatedAttendee,
-    ...currentAttendees.slice(attendeeIndex + 1),
-  ];
-
-  // Assign the completely new array to the database.
-  db.attendees = newAttendees;
-  
-  revalidatePath('/admin/attendees');
-  
-  return { success: true };
 }
