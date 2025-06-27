@@ -24,10 +24,8 @@ const getDb = (): AppDb => {
   return globalWithDb.__db;
 };
 
-const db = getDb();
-
-
 export async function getAttendees(): Promise<Attendee[]> {
+  const db = getDb();
   // Return a copy to prevent direct mutation of the "database"
   return Promise.resolve([...db.attendees]);
 }
@@ -36,6 +34,8 @@ export async function addAttendee(name: string) {
   if (!name.trim()) {
     return { success: false, message: 'Name cannot be empty' };
   }
+
+  const db = getDb();
   
   const now = new Date();
   const formatter = new Intl.DateTimeFormat('es-NI', {
@@ -65,6 +65,7 @@ export async function addAttendee(name: string) {
 }
 
 export async function toggleArchiveAttendee(formData: FormData) {
+  const db = getDb();
   const attendeeId = Number(formData.get('attendeeId'));
 
   if (isNaN(attendeeId)) {
