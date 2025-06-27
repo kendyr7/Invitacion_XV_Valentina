@@ -72,12 +72,17 @@ export async function toggleArchiveAttendee(formData: FormData) {
     return { success: false, message: 'Invalid attendee ID' };
   }
 
-  const attendee = db.attendees.find((a) => a.id === attendeeId);
-  if (attendee) {
-    attendee.archived = !attendee.archived;
-  } else {
-    return { success: false, message: 'Attendee not found' };
+  const attendeeExists = db.attendees.some(attendee => attendee.id === attendeeId);
+  if (!attendeeExists) {
+      return { success: false, message: 'Attendee not found' };
   }
+
+  db.attendees = db.attendees.map((attendee) => {
+    if (attendee.id === attendeeId) {
+      return { ...attendee, archived: !attendee.archived };
+    }
+    return attendee;
+  });
   
   revalidatePath('/admin/attendees');
   
