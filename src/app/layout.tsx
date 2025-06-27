@@ -8,6 +8,9 @@ import { AppProviders } from '@/components/AppProviders';
 export const metadata: Metadata = {
   title: 'Invitacion XV Valentina',
   description: 'An elegant invitation to our special event.',
+  icons: {
+    icon: '/favicon-32x32.png',
+  },
 };
 
 export default function RootLayout({
