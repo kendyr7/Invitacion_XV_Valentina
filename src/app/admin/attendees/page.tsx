@@ -1,3 +1,4 @@
+
 import {
   Table,
   TableBody,
@@ -10,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Users, Archive, ArchiveRestore } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from "@/components/ui/badge";
 import { getAttendees, toggleArchiveAttendee } from "@/actions/attendees";
 import type { Attendee } from "@/actions/attendees";
 
@@ -63,10 +65,16 @@ export default async function AttendeesPage() {
     <main className="flex min-h-screen flex-col items-center bg-background p-4 pt-0 sm:p-8">
       <Card className="w-full max-w-4xl shadow-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-2xl sm:text-3xl text-primary">
-            <Users className="h-8 w-8" />
-            <span>Gestión de Invitados</span>
-          </CardTitle>
+           <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+            <CardTitle className="flex items-center gap-3 text-2xl sm:text-3xl text-primary">
+              <Users className="h-8 w-8" />
+              <span>Gestión de Invitados</span>
+            </CardTitle>
+            <div className="flex items-center justify-end gap-3 text-right">
+                <span className="text-lg font-medium text-muted-foreground">Total Confirmados:</span>
+                <Badge className="text-xl px-4 py-1">{activeAttendees.length}</Badge>
+            </div>
+           </div>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="active" className="w-full">
