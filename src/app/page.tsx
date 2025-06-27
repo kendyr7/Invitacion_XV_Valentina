@@ -28,7 +28,8 @@ import {
   Wine,
   Bus,
   Mail,
-  ArrowUp
+  ArrowUp,
+  Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
@@ -37,6 +38,7 @@ import { addAttendee } from '@/actions/attendees';
 export default function HomePage() {
   const [isOpened, setIsOpened] = useState(false);
   const [guestName, setGuestName] = useState('');
+  const [isConfirming, setIsConfirming] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { toast } = useToast();
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
@@ -73,7 +75,7 @@ export default function HomePage() {
 
   const handleConfirm = async () => {
     if (!guestName.trim()) {
-       toast({
+      toast({
         title: "Campo requerido",
         description: "Por favor, ingresa tu nombre y apellido para confirmar.",
         variant: "destructive",
@@ -81,14 +83,33 @@ export default function HomePage() {
       return;
     }
 
-    await addAttendee(guestName.trim());
-    
-    toast({
-        title: "¡Confirmación enviada!",
-        description: "Tu asistencia ha sido registrada correctamente. ¡Muchas gracias!",
-    });
-
-    setGuestName('');
+    setIsConfirming(true);
+    try {
+      const result = await addAttendee(guestName.trim());
+      
+      if (result.success) {
+        toast({
+          title: "¡Confirmación enviada!",
+          description: "Tu asistencia ha sido registrada correctamente. ¡Muchas gracias!",
+        });
+        setGuestName('');
+      } else {
+        toast({
+          title: "Error al confirmar",
+          description: result.message || "No se pudo registrar tu asistencia. Por favor, inténtalo de nuevo.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Confirmation error:", error);
+      toast({
+        title: "Error inesperado",
+        description: "Ocurrió un error. Por favor, revisa la consola o contacta al administrador.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsConfirming(false);
+    }
   };
 
   const iconSizeTimeline = 28; 
@@ -318,10 +339,18 @@ export default function HomePage() {
               />
               <Button
                 onClick={handleConfirm}
+                disabled={isConfirming}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-headline text-xl py-3 px-6 sm:py-4 sm:px-8 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 w-full mb-2"
                 aria-label="Confirmar asistencia"
               >
-                Confirmar Asistencia
+                {isConfirming ? (
+                  <>
+                    <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+                    Confirmando...
+                  </>
+                ) : (
+                  'Confirmar Asistencia'
+                )}
               </Button>
               <p className="text-sm text-foreground/80 mt-2 text-center">
                 Por favor, confirma antes del 15 de Julio.
