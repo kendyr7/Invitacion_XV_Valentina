@@ -22,6 +22,24 @@ export interface Attendee {
   archived: boolean;
 }
 
+// A helper function to extract a useful error message
+const getFirebaseErrorMessage = (error: unknown): string => {
+  if (error instanceof Error) {
+    const firebaseError = error as any; // Cast to access potential 'code' property
+    switch (firebaseError.code) {
+      case 'permission-denied':
+        return 'Error de permiso. Revisa las reglas de seguridad de Firestore en tu consola de Firebase para permitir escrituras en la colección "attendees".';
+      case 'failed-precondition':
+        return 'Error de Firestore: Falta un índice. Revisa la consola del servidor para ver un enlace para crearlo.';
+      case 'unavailable':
+        return 'El servicio de Firestore no está disponible. Revisa tu conexión a internet o el estado de Google Cloud.';
+      default:
+        return firebaseError.message || 'Ocurrió un error desconocido.';
+    }
+  }
+  return 'Ocurrió un error desconocido.';
+};
+
 const formatTimestamp = (timestamp: Timestamp): string => {
   const date = timestamp.toDate();
   const formatter = new Intl.DateTimeFormat('es-NI', {
@@ -72,7 +90,7 @@ export async function addAttendee(name: string) {
     return { success: false, message: 'Error de configuración del servidor: la base de datos no está disponible.' };
   }
   if (!name.trim()) {
-    return { success: false, message: 'Name cannot be empty' };
+    return { success: false, message: 'El nombre no puede estar vacío' };
   }
 
   try {
@@ -87,7 +105,8 @@ export async function addAttendee(name: string) {
     return { success: true, attendeeId: newAttendeeRef.id };
   } catch (error) {
     console.error("Error adding attendee: ", error);
-    return { success: false, message: 'Could not add attendee to database.' };
+    const message = getFirebaseErrorMessage(error);
+    return { success: false, message: message };
   }
 }
 
@@ -98,7 +117,7 @@ export async function toggleArchiveAttendee(formData: FormData) {
   const attendeeId = formData.get('attendeeId') as string;
 
   if (!attendeeId) {
-    return { success: false, message: 'Invalid attendee ID' };
+    return { success: false, message: 'ID de invitado inválido' };
   }
 
   const attendeeRef = doc(db, 'attendees', attendeeId);
@@ -106,7 +125,7 @@ export async function toggleArchiveAttendee(formData: FormData) {
   try {
     const attendeeSnap = await getDoc(attendeeRef);
     if (!attendeeSnap.exists()) {
-      return { success: false, message: 'Attendee not found' };
+      return { success: false, message: 'Invitado no encontrado' };
     }
     const currentArchivedState = attendeeSnap.data().archived;
 
@@ -119,6 +138,7 @@ export async function toggleArchiveAttendee(formData: FormData) {
     return { success: true };
   } catch (error) {
     console.error("Error toggling archive state: ", error);
-    return { success: false, message: 'Could not update attendee.' };
+    const message = getFirebaseErrorMessage(error);
+    return { success: false, message: message };
   }
 }
