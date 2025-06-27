@@ -7,6 +7,7 @@ export interface Attendee {
   id: number;
   name: string;
   confirmedAt: string;
+  archived: boolean;
 }
 
 // HACK: This is a workaround to persist data in-memory across hot reloads in dev.
@@ -41,6 +42,7 @@ export async function addAttendee(name: string) {
     id: db.nextId++,
     name,
     confirmedAt: format(new Date(), 'dd/MM/yyyy HH:mm'),
+    archived: false,
   };
   
   db.attendees.push(newAttendee);
@@ -50,14 +52,19 @@ export async function addAttendee(name: string) {
   return { success: true, attendee: newAttendee };
 }
 
-export async function removeAttendee(formData: FormData) {
+export async function toggleArchiveAttendee(formData: FormData) {
   const attendeeId = Number(formData.get('attendeeId'));
 
   if (isNaN(attendeeId)) {
     return { success: false, message: 'Invalid attendee ID' };
   }
 
-  db.attendees = db.attendees.filter((attendee) => attendee.id !== attendeeId);
+  const attendee = db.attendees.find((a) => a.id === attendeeId);
+  if (attendee) {
+    attendee.archived = !attendee.archived;
+  } else {
+    return { success: false, message: 'Attendee not found' };
+  }
   
   revalidatePath('/admin/attendees');
   

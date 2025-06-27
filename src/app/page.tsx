@@ -297,7 +297,6 @@ export default function HomePage() {
               titleClassName="text-primary"
             >
               <p className="flex items-center justify-center gap-2">
-                <Mail size={20} className="inline-block" />
                 <span>Agradecemos sus muestras de cariño en sobre</span>
               </p>
             </SectionCard>

@@ -7,12 +7,57 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Trash2 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Users, Archive, ArchiveRestore } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getAttendees, removeAttendee } from "@/actions/attendees";
+import { getAttendees, toggleArchiveAttendee } from "@/actions/attendees";
+import type { Attendee } from "@/actions/attendees";
+
+const AttendeeTable = ({ attendees, isArchived }: { attendees: Attendee[], isArchived: boolean }) => (
+  <div className="rounded-md border">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Nombre del Invitado</TableHead>
+          <TableHead>Fecha de Confirmación</TableHead>
+          <TableHead className="text-right">Acciones</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {attendees.map((attendee) => (
+          <TableRow key={attendee.id}>
+            <TableCell className="font-medium">{attendee.name}</TableCell>
+            <TableCell>{attendee.confirmedAt}</TableCell>
+            <TableCell className="text-right">
+               <form action={toggleArchiveAttendee}>
+                 <input type="hidden" name="attendeeId" value={attendee.id} />
+                 <Button variant="ghost" size="icon" type="submit">
+                   {isArchived ? (
+                     <ArchiveRestore className="h-4 w-4 text-primary" />
+                   ) : (
+                     <Archive className="h-4 w-4 text-destructive" />
+                   )}
+                   <span className="sr-only">{isArchived ? 'Desarchivar' : 'Archivar'}</span>
+                 </Button>
+               </form>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+     {attendees.length === 0 && (
+        <div className="text-center py-10 text-muted-foreground">
+          {isArchived ? 'No hay invitados archivados.' : 'Aún no hay invitados confirmados.'}
+        </div>
+      )}
+  </div>
+);
 
 export default async function AttendeesPage() {
-  const attendees = await getAttendees();
+  const allAttendees = await getAttendees();
+  
+  const activeAttendees = allAttendees.filter(a => !a.archived);
+  const archivedAttendees = allAttendees.filter(a => a.archived);
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-background p-4 pt-0 sm:p-8">
@@ -20,43 +65,22 @@ export default async function AttendeesPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-2xl sm:text-3xl text-primary">
             <Users className="h-8 w-8" />
-            <span>Invitados Confirmados</span>
+            <span>Gestión de Invitados</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nombre del Invitado</TableHead>
-                  <TableHead>Fecha de Confirmación</TableHead>
-                  <TableHead className="text-right">Acciones</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {attendees.map((attendee) => (
-                  <TableRow key={attendee.id}>
-                    <TableCell className="font-medium">{attendee.name}</TableCell>
-                    <TableCell>{attendee.confirmedAt}</TableCell>
-                    <TableCell className="text-right">
-                       <form action={removeAttendee}>
-                         <input type="hidden" name="attendeeId" value={attendee.id} />
-                         <Button variant="ghost" size="icon" type="submit">
-                           <Trash2 className="h-4 w-4 text-destructive" />
-                           <span className="sr-only">Eliminar</span>
-                         </Button>
-                       </form>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-           {attendees.length === 0 && (
-            <div className="text-center py-10 text-muted-foreground">
-              Aún no hay invitados confirmados.
-            </div>
-          )}
+          <Tabs defaultValue="active" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="active">Confirmados</TabsTrigger>
+              <TabsTrigger value="archived">Archivados</TabsTrigger>
+            </TabsList>
+            <TabsContent value="active" className="mt-4">
+               <AttendeeTable attendees={activeAttendees} isArchived={false} />
+            </TabsContent>
+            <TabsContent value="archived" className="mt-4">
+              <AttendeeTable attendees={archivedAttendees} isArchived={true} />
+            </TabsContent>
+          </Tabs>
         </CardContent>
       </Card>
     </main>
