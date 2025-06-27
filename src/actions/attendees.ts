@@ -38,6 +38,10 @@ const formatTimestamp = (timestamp: Timestamp): string => {
 };
 
 export async function getAttendees(): Promise<Attendee[]> {
+  if (!db) {
+    console.error("Firestore is not initialized. Returning empty list.");
+    return [];
+  }
   try {
     const attendeesCol = collection(db, 'attendees');
     const q = query(attendeesCol, orderBy('confirmedAt', 'desc'));
@@ -54,11 +58,19 @@ export async function getAttendees(): Promise<Attendee[]> {
     return attendeeList;
   } catch (error) {
     console.error("Error fetching attendees: ", error);
+    if ((error as any).code === 'failed-precondition') {
+      console.error(
+        'Firestore index not found. Please create the required index in your Firebase console. The error message should contain a link to create it.'
+      );
+    }
     return [];
   }
 }
 
 export async function addAttendee(name: string) {
+  if (!db) {
+    return { success: false, message: 'Error de configuración del servidor: la base de datos no está disponible.' };
+  }
   if (!name.trim()) {
     return { success: false, message: 'Name cannot be empty' };
   }
@@ -80,6 +92,9 @@ export async function addAttendee(name: string) {
 }
 
 export async function toggleArchiveAttendee(formData: FormData) {
+  if (!db) {
+    return { success: false, message: 'Error de configuración del servidor: la base de datos no está disponible.' };
+  }
   const attendeeId = formData.get('attendeeId') as string;
 
   if (!attendeeId) {

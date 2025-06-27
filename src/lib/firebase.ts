@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, type Firestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,9 +10,22 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-// We add a check to see if the app is already initialized to prevent errors during hot-reloads in development.
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore(app);
+let db: Firestore | undefined;
+
+// We check if the project ID is provided. If not, Firebase initialization will fail.
+// This is a common issue when the .env.local file is not set up correctly.
+if (firebaseConfig.projectId) {
+  try {
+    const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+    db = getFirestore(app);
+  } catch (e) {
+    console.error(
+      "Firebase initialization error. Please ensure your .env.local file is configured correctly.",
+      e
+    );
+  }
+} else {
+  console.error("Firebase project ID not found. Skipping Firebase initialization.");
+}
 
 export { db };
