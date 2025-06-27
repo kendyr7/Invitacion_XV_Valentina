@@ -57,7 +57,8 @@ export async function addAttendee(name: string) {
     archived: false,
   };
   
-  db.attendees.push(newAttendee);
+  // IMMUTABLE UPDATE: Replace the old array with a new one.
+  db.attendees = [...db.attendees, newAttendee];
   
   revalidatePath('/admin/attendees');
   
@@ -72,17 +73,28 @@ export async function toggleArchiveAttendee(formData: FormData) {
     return { success: false, message: 'Invalid attendee ID' };
   }
 
-  const attendeeExists = db.attendees.some(attendee => attendee.id === attendeeId);
-  if (!attendeeExists) {
-      return { success: false, message: 'Attendee not found' };
-  }
+  const currentAttendees = db.attendees;
+  const attendeeIndex = currentAttendees.findIndex(a => a.id === attendeeId);
 
-  db.attendees = db.attendees.map((attendee) => {
-    if (attendee.id === attendeeId) {
-      return { ...attendee, archived: !attendee.archived };
-    }
-    return attendee;
-  });
+  if (attendeeIndex === -1) {
+    return { success: false, message: 'Attendee not found' };
+  }
+  
+  // Create a new, updated attendee object.
+  const updatedAttendee = {
+    ...currentAttendees[attendeeIndex],
+    archived: !currentAttendees[attendeeIndex].archived,
+  };
+
+  // Create a new array with the updated attendee using slice.
+  const newAttendees = [
+    ...currentAttendees.slice(0, attendeeIndex),
+    updatedAttendee,
+    ...currentAttendees.slice(attendeeIndex + 1),
+  ];
+
+  // Assign the completely new array to the database.
+  db.attendees = newAttendees;
   
   revalidatePath('/admin/attendees');
   
