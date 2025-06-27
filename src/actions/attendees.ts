@@ -1,7 +1,6 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { format } from 'date-fns';
 
 export interface Attendee {
   id: number;
@@ -38,10 +37,23 @@ export async function addAttendee(name: string) {
     return { success: false, message: 'Name cannot be empty' };
   }
   
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('es-NI', {
+      timeZone: 'America/Managua',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+  });
+  // The output for 'es-NI' is like "01/08/2025, 19:00". The comma needs to be removed.
+  const formattedNicaraguaTime = formatter.format(now).replace(',', '');
+  
   const newAttendee: Attendee = {
     id: db.nextId++,
     name,
-    confirmedAt: format(new Date(), 'dd/MM/yyyy HH:mm'),
+    confirmedAt: formattedNicaraguaTime,
     archived: false,
   };
   
