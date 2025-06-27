@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MusicPlayer from '@/components/event/MusicPlayer';
 import CountdownTimer from '@/components/event/CountdownTimer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,6 +28,7 @@ import {
   Wine,
   Bus,
   Mail,
+  ArrowUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
@@ -36,12 +37,38 @@ import { addAttendee } from '@/actions/attendees';
 export default function HomePage() {
   const [isOpened, setIsOpened] = useState(false);
   const [guestName, setGuestName] = useState('');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const { toast } = useToast();
   const audioSrc = "/audio/paradise-coldplay.mp3"; 
   const eventTargetDate = "2025-08-01T19:00:00";
+
+  useEffect(() => {
+    if (!isOpened) return;
+
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpened]);
   
   const handleOpenEnvelope = () => {
     setIsOpened(true);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   const handleConfirm = async () => {
@@ -314,6 +341,15 @@ export default function HomePage() {
         </footer>
 
       </div>
+       {showBackToTop && (
+        <Button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 h-12 w-12 rounded-full bg-primary/80 backdrop-blur-sm p-0 text-primary-foreground shadow-lg transition-transform hover:scale-110 hover:bg-primary"
+          aria-label="Volver al inicio"
+        >
+          <ArrowUp className="h-6 w-6" />
+        </Button>
+      )}
     </main>
   );
 }
